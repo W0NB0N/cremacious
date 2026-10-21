@@ -129,6 +129,25 @@ some coffee stays in the glass so it still reads as a cup on its side. Steam wis
 **Phone comparison:** one block per spec with the picked items side by side, instead of a
 sideways-scrolling table.
 
+**Fills:** every hover fill (buttons, pills, catalogue rows) rises from the bottom edge with a long,
+shallow wave on its surface (160 px wavelength, about 4 px high, drifting slowly), and leaves
+through the top once full. Catalogue rows are full bleed, so their fill spans the screen. The page
+transition's leading edge is the liquid surface: a crema band on a drifting wave.
+
+**Removing an item:** a cross beside each name in the comparison head. Pointing at it strikes the
+name through and turns the cross. Source links keep an underline at rest; on hover it runs out to
+the right and pours back in from the left, and the arrow nudges toward the source.
+
+**Pointer:** a 10 px espresso dot trails the native cursor a few frames behind
+(`src/motion/cursor.ts`), stretching along its path like a drop. Over anything pressable it
+becomes a coffee bean (30 px, crème crease and rim) that leans into horizontal motion. It sits
+between the page and the liquid layers, so the flood inverts it with everything else. The native
+cursor stays visible. Off on touch and under reduced motion.
+
+**First load:** the page arrives from under the coffee: the transition curtain starts over the page
+and drains off it in pure CSS (no wait for JavaScript), then hands itself to GSAP for page
+transitions. The headline reveal waits until the coffee has passed.
+
 **Loader:** none. It cost 3 to 7 s on a throttled phone, and the server-rendered pool already
 makes the first frame the brand moment. The intro is the headline rising line by line.
 

@@ -2,22 +2,40 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ease, onPage, onScroll, prefersReducedMotion, scrollToTarget, setTransition } from '@/engine';
+import { startCursor } from './cursor';
 import { startShot } from './shot';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function setupMotion() {
   // Page transition: coffee floods up over the page, then drains down off the next one.
+  // The panel travels in px past the bottom edge so the wave above it is hidden too. The wave on its
+  // leading edge drifts sideways while it moves (one period = 25% of its width).
+  const drift = (c: HTMLElement, d: number) => gsap.fromTo(c.querySelector('[data-curtain-wave]'), { xPercent: 0 }, { xPercent: -25, duration: d, ease: 'none' });
   setTransition({
     leave: (c) => gsap.timeline()
       .set(c, { autoAlpha: 1 })
-      .fromTo(c.querySelector('.curtain__panel'), { yPercent: 102 }, { yPercent: 0, duration: 0.85, ease: ease.inOut }),
+      .fromTo(c.querySelector('.curtain__panel'), { y: innerHeight + 60 }, { y: 0, duration: 0.85, ease: ease.inOut })
+      .add(drift(c, 0.85), 0),
     enter: (c) => gsap.timeline()
-      .to(c.querySelector('.curtain__panel'), { yPercent: 102, duration: 0.9, ease: ease.inOut })
+      .to(c.querySelector('.curtain__panel'), { y: innerHeight + 60, duration: 0.9, ease: ease.inOut })
+      .add(drift(c, 0.9), 0)
       .set(c, { autoAlpha: 0 }),
   });
 
   startShot();
+  startCursor();
+
+  // First load: the curtain drains off the page in CSS (globals.css). Hand it back to GSAP for page
+  // transitions once that has finished, and hold the page intro until the coffee has passed.
+  const curtain = document.getElementById('curtain');
+  const panel = curtain?.querySelector('.curtain__panel');
+  let draining = !!panel?.getAnimations().some((a) => a.playState !== 'finished');
+  if (curtain && panel) {
+    const done = () => curtain.classList.add('is-done');
+    if (draining) panel.addEventListener('animationend', done, { once: true });
+    else done();
+  }
 
   // In-page links from any page: smooth scroll when the target is here, else navigate home.
   document.addEventListener('click', (e) => {
@@ -61,5 +79,12 @@ export function setupMotion() {
     const stage = document.querySelector('[data-cup-stage]');
     if (!stage || prefersReducedMotion()) return;
     intro.add(gsap.from(stage, { y: -40, autoAlpha: 0, duration: 1.3, ease: ease.out }), 0.15);
+  });
+
+  // Registered last, so it shifts everything the other page functions added to the intro.
+  onPage(({ intro }) => {
+    if (!draining) return;
+    draining = false;
+    intro.shiftChildren(0.55, true);
   });
 }

@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-// The 404 pins the shot: a channeled shot gushes, so the liquid sits high and fast.
+// The 404 pins the shot: a channeled shot gushes, so the liquid sits high, settled just under the heading.
 export default function NotFound() {
   return (
-    <section className="lost" data-shot-pin="0.42" data-shot-readout="9.4,52.0" aria-labelledby="lost-title">
+    <section className="lost" data-shot-pin="0.375" data-shot-pin-below="lost-title" data-shot-readout="9.4,52.0" aria-labelledby="lost-title">
       <p className="lost__code" aria-hidden="true">404</p>
       <h1 id="lost-title" className="lost__title">{site.notFound.title}</h1>
       <p className="lost__text">{site.notFound.text}</p>

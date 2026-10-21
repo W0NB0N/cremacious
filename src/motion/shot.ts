@@ -33,6 +33,9 @@ let streams: HTMLCanvasElement[] = [];
 let pools: HTMLElement[] = [];
 let W = 0, H = 0, dpr = 1;
 const S = 300; // strip height, css px
+let SH = S; // strip height snapped to whole device pixels
+let px = 1; // the screen's real device pixel ratio, for snapping
+const snap = (v: number) => Math.round(v * px) / px;
 const SW = 200; // stream canvas width, css px
 let stripY = NaN, poolY = NaN, streamX = NaN, streamOn = false;
 
@@ -45,6 +48,7 @@ const st = {
   level: -1, tilt: 0, lastVel: 0, hp: 1, heroEnd: 0, lastMove: 0,
   pour: 0, lipX: -1, lipY: -1, angle: 0,
   pinned: null as number | null,
+  pinBelow: null as HTMLElement | null, // a page can settle the surface just under one element
   fixed: null as [number, number] | null,
 };
 const pointer = { x: -1, y: -1, vy: 0, lean: 0 };
@@ -80,7 +84,9 @@ function resize() {
   W = document.documentElement.clientWidth;
   H = innerHeight;
   dpr = Math.min(devicePixelRatio || 1, isTouch() ? 1.5 : 2);
-  strips.forEach((c) => { c.width = Math.round(W * dpr); c.height = Math.round(S * dpr); });
+  px = devicePixelRatio || 1;
+  SH = Math.round(S * px) / px;
+  strips.forEach((c) => { c.width = Math.round(W * dpr); c.height = Math.round(SH * dpr); c.style.height = `${SH}px`; });
   streams.forEach((c) => { c.width = Math.round(SW * dpr); c.height = Math.round(H * dpr); });
   stripY = poolY = streamX = NaN;
 }
@@ -228,17 +234,24 @@ function draw() {
   let top = Infinity, bottom = -Infinity;
   for (let i = 0; i <= N; i++) { top = Math.min(top, ys[i]); bottom = Math.max(bottom, ys[i] + foam[i]); }
 
-  // The strip holds the surface; the pool starts exactly where the strip ends.
-  const y0 = Math.max(Math.floor(top - 56), Math.ceil(bottom + 64) - S);
-  const py = bottom < -2 ? 0 : Math.max(0, y0 + S); // flooded: the pool covers everything
-  if (y0 !== stripY) { place(strips, 0, y0); stripY = y0; }
+  // The strip holds the surface; the pool starts exactly where the strip ends. The strip only moves
+  // when the surface is about to leave it (ripples and the pointer never move it), and both sit on
+  // whole device pixels: a moving join shows as a one-frame hairline.
+  const needTop = top - 56, needBot = bottom + 64;
+  if (Number.isNaN(stripY) || needTop < stripY || needBot > stripY + SH) {
+    stripY = snap(needBot - needTop > SH ? needBot - SH : (needTop + needBot) / 2 - SH / 2);
+    place(strips, 0, stripY);
+  }
+  const y0 = stripY;
+  const py = bottom < -2 ? 0 : Math.max(0, snap(y0 + SH)); // flooded: the pool covers everything
   if (py !== poolY) { place(pools, 0, py); poolY = py; }
 
-  [inv, lift, crema].forEach((x) => { x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, W * dpr, S * dpr); x.setTransform(dpr, 0, 0, dpr, 0, -y0 * dpr); });
+  const k = strips[0].height / SH;
+  [inv, lift, crema].forEach((x) => { x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, x.canvas.width, x.canvas.height); x.setTransform(k, 0, 0, k, 0, -y0 * k); });
   drawStream();
   if (top > H + 4 || bottom < -2) return; // the surface is off screen: the pool divs do the work
 
-  const end = y0 + S;
+  const end = y0 + SH;
   const body = new Path2D();
   body.moveTo(-2, end);
   trace(body, (i) => ys[i] + foam[i]);
@@ -344,7 +357,7 @@ function tick(time: number) {
   if (!W || document.hidden) return;
   const r = Math.min(4, gsap.ticker.deltaRatio(60));
   const p = st.pinned ?? scrollState().progress;
-  const target = levelFor(p);
+  const target = st.pinBelow ? H - (st.pinBelow.getBoundingClientRect().bottom + 22) : levelFor(p);
   st.level = st.level < 0 ? target : st.level + (target - st.level) * (1 - Math.pow(0.9, r));
   pointer.lean += ((pointer.x >= 0 ? pointer.x / W - 0.5 : 0) - pointer.lean) * (1 - Math.pow(0.95, r));
   updateCup(time);
@@ -403,6 +416,7 @@ export function startShot() {
   onPage(() => {
     const pin = visible<HTMLElement>('[data-shot-pin]');
     st.pinned = pin ? +pin.dataset.shotPin! : null;
+    st.pinBelow = pin?.dataset.shotPinBelow ? document.getElementById(pin.dataset.shotPinBelow) : null;
     st.fixed = pin?.dataset.shotReadout ? (pin.dataset.shotReadout.split(',').map(Number) as [number, number]) : null;
     shown = '';
     cupStage = document.querySelector('[data-cup-stage]');
@@ -420,6 +434,6 @@ export function startShot() {
       onUpdate: (s) => { st.hp = s.progress; },
       onRefresh: (s) => { const max = ScrollTrigger.maxScroll(window); st.heroEnd = max > 0 ? s.end / max : 0; },
     });
-    return () => { cupStage = cupBody = cupShadow = null; cupHandle = null; cupLiquid = null; cupFill = cupCrema = null; st.pour = 0; drops.length = 0; };
+    return () => { st.pinBelow = null; cupStage = cupBody = cupShadow = null; cupHandle = null; cupLiquid = null; cupFill = cupCrema = null; st.pour = 0; drops.length = 0; };
   });
 }

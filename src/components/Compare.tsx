@@ -15,6 +15,18 @@ function Value({ c, max }: { c: Cell; max?: number }) {
   );
 }
 
+/** An item's name in the table head, with the × that removes it. */
+function Name({ p, onRemove }: { p: Product; onRemove: () => void }) {
+  return (
+    <span className="table__name">
+      <span className="table__name-text">{p.name}</span>
+      <button type="button" className="table__x" onClick={onRemove} aria-label={`Remove ${p.brand} ${p.name}`}>
+        <span aria-hidden="true">×</span>
+      </button>
+    </span>
+  );
+}
+
 /** Bars only compare like with like: two or more numbers in the same unit. */
 function barMax(cells: Cell[]) {
   const nums = cells.filter((c) => c.value !== undefined);
@@ -80,10 +92,7 @@ export function Compare() {
                 {picked.map((p) => (
                   <th scope="col" key={p.id} className="table__item">
                     <span className="table__brand">{p.brand}</span>
-                    <span className="table__name">{p.name}</span>
-                    <button type="button" className="table__remove" onClick={() => toggle(p.id)}>
-                      Remove<span className="sr-only"> {p.brand} {p.name}</span><span className="table__x" aria-hidden="true">×</span>
-                    </button>
+                    <Name p={p} onRemove={() => toggle(p.id)} />
                   </th>
                 ))}
               </tr>
@@ -122,9 +131,9 @@ export function Compare() {
       {picked.length ? (
         // Phone layout: one block per spec, the picked items side by side inside it.
         <div className="cards" style={{ ['--n' as string]: picked.length }}>
-          <div className="cards__names" aria-hidden="true">
+          <div className="cards__names">
             {picked.map((p) => (
-              <p key={p.id}><span className="table__brand">{p.brand}</span><span className="table__name">{p.name}</span></p>
+              <p key={p.id}><span className="table__brand">{p.brand}</span><Name p={p} onRemove={() => toggle(p.id)} /></p>
             ))}
           </div>
           <dl>

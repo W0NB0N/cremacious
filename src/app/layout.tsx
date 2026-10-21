@@ -30,12 +30,34 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <a className="skip-link" href="#main">Skip to content</a>
         <div id="curtain" aria-hidden="true">
-          <div className="curtain__panel"><span className="curtain__crema" /></div>
+          <div className="curtain__panel">
+            <svg className="curtain__wave" viewBox="0 0 1600 44" preserveAspectRatio="none" data-curtain-wave>
+              <defs>
+                <linearGradient id="curtain-crema" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stopColor="#ecd6b1" />
+                  <stop offset="0.5" stopColor="#d6a66b" />
+                  <stop offset="1" stopColor="#b77a3f" />
+                </linearGradient>
+              </defs>
+              <path className="curtain__crema" d="M0 16 Q100 4 200 16 T400 16 T600 16 T800 16 T1000 16 T1200 16 T1400 16 T1600 16 V44 H0 Z" />
+              <path className="curtain__coffee" d="M0 28 Q100 16 200 28 T400 28 T600 28 T800 28 T1000 28 T1200 28 T1400 28 T1600 28 V44 H0 Z" />
+            </svg>
+          </div>
         </div>
         <Header />
         <main id="main" tabIndex={-1}>{children}</main>
         {/* The liquid: blend layers that invert the page palette below the surface (DESIGN.md).
             The pool renders on the server at its resting level, so the first frame already has it. */}
+        {/* The pointer sits under the liquid layers, so it inverts with the page like everything else. */}
+        <div className="pointer" aria-hidden="true" data-pointer>
+          <span className="pointer__dot-wrap" data-pointer-stretch><span className="pointer__dot" data-pointer-dot /></span>
+          <span className="pointer__bean-wrap" data-pointer-tilt>
+            <svg className="pointer__bean" viewBox="0 0 40 52" data-pointer-bean>
+              <ellipse cx="20" cy="26" rx="15.5" ry="21.5" />
+              <path d="M20.5 6.5 C 12.5 17, 28.5 33, 19.5 45.5" />
+            </svg>
+          </span>
+        </div>
         <div className="pool pool--invert" aria-hidden="true" />
         <div className="pool pool--lift" aria-hidden="true" />
         <div className="pool-crema" aria-hidden="true" />
