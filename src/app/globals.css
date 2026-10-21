@@ -1,6 +1,12 @@
 /* Site styles. Tokens in tokens.css, engine foundation in engine.css. */
 
-html { background: var(--c-bg); color: var(--c-fg); overflow-x: clip; } /* a sideways table scroller must never widen the phone viewport */
+html {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  overflow-x: clip;
+  scrollbar-width: none;
+} /* a sideways table scroller must never widen the phone viewport */
+html::-webkit-scrollbar { display: none; }
 body { font-feature-settings: 'kern'; }
 ::selection { background: var(--c-fg); color: var(--c-bg); }
 :focus-visible { outline: 2px solid var(--c-fg); outline-offset: 4px; } /* the outline follows each element's own radius */
@@ -22,17 +28,19 @@ section[tabindex='-1']:focus { outline: none; }
 .header {
   position: fixed; inset: 0 0 auto 0; z-index: var(--z-header);
   display: flex; justify-content: space-between; align-items: baseline;
-  padding: calc(var(--gutter) * 0.75) var(--gutter);
+  padding: 1.1rem var(--gutter) 0.95rem;
   font-size: var(--t-s); font-weight: 600; letter-spacing: -0.005em;
   pointer-events: none;
-  transition: translate 0.6s var(--ease-out);
+  border-bottom: 1px solid var(--c-line);
+  transition: translate 0.6s var(--ease-out), background-color 0.4s;
 }
-.header a { pointer-events: auto; display: inline-block; padding-block: 0.35em; }
-.header__brand { font-family: var(--f-display); font-size: 1.0625rem; font-weight: 800; letter-spacing: -0.03em; font-variation-settings: 'opsz' 24; }
-.header__nav { display: flex; gap: clamp(1rem, 2vw, 2rem); list-style: none; padding: 0; }
-html.frame-away .header { translate: 0 -140%; }
-html.frame-solid .header { background: var(--c-bg); box-shadow: 0 1px 0 var(--c-line); }
-.header { transition: translate 0.6s var(--ease-out), background-color 0.4s; }
+.header a { pointer-events: auto; padding-block: 0; display: inline-block; }
+.header__brand { font-family: var(--f-display); letter-spacing: -0.03em; font-variation-settings: 'opsz' 24; font-size: clamp(1.55rem, 1.1rem + 1.15vw, 2rem); font-weight: 800; line-height: 1; }
+.header__nav {
+  position: fixed; top: 1.35rem; right: var(--gutter);
+  display: flex; gap: clamp(1rem, 2vw, 2rem); list-style: none; padding: 0;
+}
+html.frame-solid .header { background: var(--c-bg); }
 
 /* Underline that pours left to right (nav) */
 .draw {
@@ -41,7 +49,6 @@ html.frame-solid .header { background: var(--c-bg); box-shadow: 0 1px 0 var(--c-
 }
 @media (hover: hover) { .draw:hover { background-size: 100% 1.5px; } }
 .draw:focus-visible, .draw[aria-current] { background-size: 100% 1.5px; }
-
 /* Source links: underlined at rest. On hover the line runs out to the right and pours back in
    from the left, and the arrow nudges toward where the link goes (they open the source). */
 .link {
@@ -370,11 +377,11 @@ html.frame-solid .header { background: var(--c-bg); box-shadow: 0 1px 0 var(--c-
 .lost__text { max-width: 40ch; margin-top: 1.4rem; font-size: var(--t-m); line-height: 1.4; } /* room for the crema between heading and text */
 
 /* ---------- Pointer: a dot that trails, a coffee bean over anything you can press ---------- */
-.pointer { position: fixed; left: 0; top: 0; z-index: var(--z-pointer); pointer-events: none; display: none; }
+.pointer { position: fixed !important; inset: 0 auto auto 0; z-index: var(--z-pointer); pointer-events: none; display: none; transform: none; }
 html.has-pointer .pointer { display: block; }
 .pointer__dot-wrap, .pointer__bean-wrap { position: absolute; left: 0; top: 0; }
 .pointer__dot { display: block; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--espresso); box-shadow: 0 0 0 1.5px var(--creme); }
-.pointer__bean { display: block; width: 30px; height: 39px; max-width: none; margin: -19.5px 0 0 -15px; overflow: visible; } /* max-width: the wrapper is 0 wide */
+.pointer__bean { display: block; width: 30px; height: 55px; max-width: none; margin: -27.5px 0 0 -21px; overflow: visible; } /* max-width: the wrapper is 0 wide */
 .pointer__bean ellipse { fill: var(--espresso); stroke: var(--creme); stroke-width: 2; } /* the rim keeps it visible on espresso fills */
 .pointer__bean path { fill: none; stroke: var(--creme); stroke-width: 2.6; stroke-linecap: round; }
 

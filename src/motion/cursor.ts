@@ -20,7 +20,8 @@ export function startCursor() {
   document.documentElement.classList.add('has-pointer');
 
   gsap.set(root, { autoAlpha: 0 });
-  gsap.set(bean, { scale: 0.2, autoAlpha: 0, rotation: -70, transformOrigin: '50% 50%' });
+  gsap.set(dot, { scale: 0, autoAlpha: 0 });
+  gsap.set(bean, { scale: 1, autoAlpha: 1, rotation: BEAN_REST, transformOrigin: '50% 50%' });
   const setX = gsap.quickSetter(root, 'x', 'px');
   const setY = gsap.quickSetter(root, 'y', 'px');
   const aim = { x: -100, y: -100 };
@@ -37,11 +38,9 @@ export function startCursor() {
     if (on === over) return;
     over = on;
     if (on) {
-      gsap.to(dot, { scale: 0, duration: 0.35, ease: ease.soft, overwrite: true });
-      gsap.to(bean, { scale: 1, autoAlpha: 1, rotation: 0, duration: 0.7, ease: ease.out, overwrite: true });
+      gsap.to(bean, { scale: 1.12, autoAlpha: 1, rotation: 0, duration: 0.45, ease: ease.out, overwrite: true });
     } else {
-      gsap.to(bean, { scale: 0.2, autoAlpha: 0, rotation: -70, duration: 0.4, ease: ease.soft, overwrite: true });
-      gsap.to(dot, { scale: 1, duration: 0.55, ease: ease.out, overwrite: true });
+      gsap.to(bean, { scale: 1, autoAlpha: 1, rotation: BEAN_REST, duration: 0.4, ease: ease.soft, overwrite: true });
     }
   };
   // Whatever is under a still pointer changes when the page scrolls or swaps: check again then.
