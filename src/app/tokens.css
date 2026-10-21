@@ -1,0 +1,58 @@
+/* Design tokens. Light palette by default; the dark palette is its exact inverse
+   (S - x with S = ground + ink = rgb(302 271 256)), which is what the liquid's blend
+   layers produce. html.is-dark (reduced motion path) uses the same values. */
+
+:root {
+  --c-bg: #f2e8de;
+  --c-fg: #3c2722;
+  --c-muted: #715a4e;
+  --c-line: rgb(60 39 34 / 0.16);
+  --c-well: #e8dacb;
+  --c-accent: var(--c-fg);
+  --c-curtain: #3c2722;
+
+  /* Fixed colors: the liquid and the cup never swap */
+  --espresso: #3c2722;
+  --creme: #f2e8de;
+  --crema: #c98a3e;
+  --crema-light: #d9b07c;
+  --crema-pale: #ead2ac;
+
+  --f-display: var(--font-display), 'Arial Narrow', system-ui, sans-serif;
+  --f-body: var(--font-text), system-ui, sans-serif;
+
+  --t-mega: clamp(4rem, 0.4rem + 17.6vw, 21rem);
+  --t-xl: clamp(2.4rem, 1.1rem + 4.1vw, 5.25rem);
+  --t-l: clamp(1.6rem, 1.15rem + 1.7vw, 2.75rem);
+  --t-m: clamp(1.2rem, 1.06rem + 0.55vw, 1.55rem);
+  --t-body: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+  --t-s: 0.875rem;
+  --t-xs: 0.8125rem;
+
+  --u: clamp(0.5rem, 0.35rem + 0.6vw, 1rem);
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 2.5rem);
+  --cols: 12;
+
+  --radius: 0px;
+  --pill: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-ui: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  --z-gl: 0;
+  --z-content: 1;
+  --z-header: 50;
+  --z-shot: 60;
+  --z-readout: 62;
+  --z-cursor: 80;
+  --z-curtain: 90;
+  --z-loader: 100;
+}
+
+html.is-dark {
+  --c-bg: #3c2722;
+  --c-fg: #f2e8de;
+  --c-muted: #bdb5b2;
+  --c-line: rgb(242 232 222 / 0.16);
+  --c-well: #463535;
+}
