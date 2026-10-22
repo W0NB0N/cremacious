@@ -26,7 +26,7 @@ section[tabindex='-1']:focus { outline: none; }
 
 /* ---------- Header ---------- */
 .header {
-  position: fixed; inset: 0 0 auto 0; z-index: var(--z-header);
+  position: absolute; inset: 0 0 auto 0; z-index: var(--z-header);
   display: flex; justify-content: space-between; align-items: baseline;
   padding: 1.1rem var(--gutter) 0.95rem;
   font-size: var(--t-s); font-weight: 600; letter-spacing: -0.005em;
@@ -37,7 +37,7 @@ section[tabindex='-1']:focus { outline: none; }
 .header a { pointer-events: auto; padding-block: 0; display: inline-block; }
 .header__brand { font-family: var(--f-display); letter-spacing: -0.03em; font-variation-settings: 'opsz' 24; font-size: clamp(1.55rem, 1.1rem + 1.15vw, 2rem); font-weight: 800; line-height: 1; }
 .header__nav {
-  position: fixed; top: 1.35rem; right: var(--gutter);
+  position: absolute; top: 1.35rem; right: var(--gutter);
   display: flex; gap: clamp(1rem, 2vw, 2rem); list-style: none; padding: 0;
 }
 html.frame-solid .header { background: var(--c-bg); }
@@ -376,11 +376,10 @@ html.frame-solid .header { background: var(--c-bg); }
 }
 .lost__text { max-width: 40ch; margin-top: 1.4rem; font-size: var(--t-m); line-height: 1.4; } /* room for the crema between heading and text */
 
-/* ---------- Pointer: a dot that trails, a coffee bean over anything you can press ---------- */
+/* ---------- Pointer: a coffee bean that follows the native cursor ---------- */
 .pointer { position: fixed !important; inset: 0 auto auto 0; z-index: var(--z-pointer); pointer-events: none; display: none; transform: none; }
 html.has-pointer .pointer { display: block; }
-.pointer__dot-wrap, .pointer__bean-wrap { position: absolute; left: 0; top: 0; }
-.pointer__dot { display: block; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--espresso); box-shadow: 0 0 0 1.5px var(--creme); }
+.pointer__bean-wrap { position: absolute; left: 0; top: 0; }
 .pointer__bean { display: block; width: 30px; height: 55px; max-width: none; margin: -27.5px 0 0 -21px; overflow: visible; } /* max-width: the wrapper is 0 wide */
 .pointer__bean ellipse { fill: var(--espresso); stroke: var(--creme); stroke-width: 2; } /* the rim keeps it visible on espresso fills */
 .pointer__bean path { fill: none; stroke: var(--creme); stroke-width: 2.6; stroke-linecap: round; }

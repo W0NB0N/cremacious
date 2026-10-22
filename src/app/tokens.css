@@ -45,7 +45,6 @@
   --z-pointer: 55; /* above the page, under the liquid: the liquid inverts it */
   --z-shot: 60;
   --z-readout: 62;
-  --z-cursor: 80;
   --z-curtain: 90;
   --z-loader: 100;
 }

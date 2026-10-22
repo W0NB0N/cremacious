@@ -9,7 +9,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initScroll, resetScroll, startScroll, stopScroll } from './scroll';
 import { initReveals } from './reveal';
-import { initCursor, initMagnetic } from './interactions';
+import { initMagnetic } from './interactions';
 import { runLoader } from './loader';
 import { playEnter, playLeave } from './transition';
 import { prefersReducedMotion } from './env';
@@ -50,7 +50,6 @@ export function syncFlags() {
 
 function initPage() {
   syncFlags();
-  document.getElementById('cursor')?.classList.remove('is-active'); // stale label from the previous page
   ctx = gsap.context(() => {
     intro = initReveals(document);
     initMagnetic(document);
@@ -67,7 +66,6 @@ export async function boot(setup?: () => void) {
   booted = true;
   syncFlags();
   initScroll();
-  initCursor();
   setup?.();
   stopScroll();
   initPage();
@@ -101,4 +99,3 @@ export async function enter({ transition = true, scrollTop = true } = {}) {
   startScroll();
   intro?.play();
 }
-

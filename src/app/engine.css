@@ -63,20 +63,6 @@ html.lenis, html.lenis body { height: auto; }
 /* No CSS transform here: GSAP owns it (CSS translate + yPercent would stack). #curtain visibility hides it. */
 .curtain__panel { position: absolute; inset: 0; background: var(--c-curtain); }
 
-/* Cursor follower: decorative, never replaces the native cursor */
-#cursor {
-  position: fixed; left: 0; top: 0; z-index: var(--z-cursor); pointer-events: none;
-  display: grid; place-items: center; width: 0; height: 0; opacity: 0;
-}
-#cursor.is-ready { opacity: 1; }
-#cursor span {
-  display: grid; place-items: center; min-width: 5.5rem; aspect-ratio: 1; border-radius: 50%;
-  background: var(--c-fg); color: var(--c-bg); font-size: var(--t-xs); letter-spacing: 0.02em;
-  transform: translate(-50%, -50%) scale(0); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-#cursor.is-active span { transform: translate(-50%, -50%) scale(1); }
-@media (hover: none), (pointer: coarse) { #cursor { display: none; } }
-
 /* Loader skeleton: restyle in the project, keep it covering the first paint */
 #loader {
   position: fixed; inset: 0; z-index: var(--z-loader);

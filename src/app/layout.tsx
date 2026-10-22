@@ -50,7 +50,6 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             The pool renders on the server at its resting level, so the first frame already has it. */}
         {/* The pointer sits under the liquid layers, so it inverts with the page like everything else. */}
         <div className="pointer" aria-hidden="true" data-pointer>
-          <span className="pointer__dot-wrap" data-pointer-stretch><span className="pointer__dot" data-pointer-dot /></span>
           <span className="pointer__bean-wrap" data-pointer-tilt>
             <svg className="pointer__bean" viewBox="0 0 40 52" data-pointer-bean>
               <ellipse cx="20" cy="26" rx="15.5" ry="21.5" />
