@@ -208,6 +208,6 @@ per spec with the chosen items in small columns; catalogue rows collapse to name
 ## Content rules
 
 - Specs live in `src/data/products/*.ts`, one typed schema per category on a shared base.
-- Every product lists its sources and the date checked (21 Oct 2026). Prices are shown in the
+- Every product lists its sources and the date checked (23 Oct 2026). Prices are shown in the
   currency the source listed, never converted.
 - `placeholder(note)` marks any value no source confirmed; the UI renders it as "Unconfirmed".

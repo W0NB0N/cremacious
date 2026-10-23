@@ -16,7 +16,7 @@ export const site = {
   title: `${brand.name} | Compare coffee grinders, espresso machines and beans`,
   description:
     'Pick two or three grinders, espresso machines, beans or brewing tools and read their specs side by side. Every value links to its source.',
-  checked: '21 October 2026',
+  checked: '23 October 2026',
   hero: {
     title: 'Compare coffee gear side by side.',
     lede: 'Grinders, espresso machines, beans and brewing tools. Real numbers from spec sheets and roaster pages, with the source next to every one.',
@@ -43,7 +43,7 @@ export const site = {
   footer: {
     line: `${shot.dose} g in, ${shot.yield} g out, ${shot.seconds} seconds. That was the shot.`,
     colophon:
-      'Prices are shown as each source listed them, in its currency, and are not converted. Set in Bricolage Grotesque and Host Grotesk.',
+      'Prices are in rupees (₹), as the Indian seller listed them on the day checked. They change often. Set in Bricolage Grotesque and Host Grotesk.',
   },
   notFound: {
     title: 'This shot channeled.',

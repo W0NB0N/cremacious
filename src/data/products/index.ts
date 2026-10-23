@@ -2,7 +2,7 @@ import { accessories } from './accessories';
 import { beans } from './beans';
 import { grinders } from './grinders';
 import { machines } from './machines';
-import { isPlaceholder, type CategoryId, type Placeholder, type Price, type Product, type Qty } from './types';
+import { isPlaceholder, type CategoryId, type Placeholder, type Price, type Product, type Qty, type Source } from './types';
 
 export * from './types';
 
@@ -74,7 +74,7 @@ export const keySpec: Record<CategoryId, string> = {
   accessories: 'kind',
 };
 
-export type Cell = { text: string; value?: number; unit?: string; note?: string };
+export type Cell = { text: string; value?: number; unit?: string; note?: string; source?: Source };
 
 const isQty = (v: unknown): v is Qty => typeof v === 'object' && v !== null && 'unit' in v && 'value' in v;
 const num = (n: number) => (Number.isInteger(n) ? String(n) : String(+n.toFixed(2)));
@@ -82,20 +82,27 @@ const num = (n: number) => (Number.isInteger(n) ? String(n) : String(+n.toFixed(
 /** Turn any spec value into display text, a numeric value for bars, or a placeholder note. */
 export function cell(p: Product, key: string): Cell {
   const v = (p.specs as Record<string, unknown>)[key];
+  const source = sourceOf(p, key);
   if (v === undefined) return { text: '' };
   if (isPlaceholder(v)) return { text: 'Unconfirmed', note: (v as Placeholder).note };
-  if (isQty(v)) return { text: v.text ?? `${num(v.value)} ${v.unit}`, value: v.value, unit: v.unit };
-  return { text: String(v) };
+  if (isQty(v)) return { text: v.text ?? `${num(v.value)} ${v.unit}`, value: v.value, unit: v.unit, source };
+  return { text: String(v), source };
 }
 
-const symbols: Record<Price['currency'], string> = { USD: '$', GBP: '£', CAD: 'CA$', ZAR: 'R ' };
-const money = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 });
+/** The source page that backs one value, if the entry says which. */
+function sourceOf(p: Product, key: string): Source | undefined {
+  const i = (p.src as Record<string, number | undefined>)[key];
+  return i === undefined ? undefined : p.sources[i];
+}
+
+const symbols: Record<Price['currency'], string> = { INR: '₹', USD: '$', GBP: '£', CAD: 'CA$', ZAR: 'R ' };
+const money = (n: number) => n.toLocaleString('en-IN', { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 });
 
 export function priceText(p: Product): Cell {
   if (isPlaceholder(p.price)) return { text: 'Unconfirmed', note: p.price.note };
   const { amount, upTo, currency, note } = p.price;
   const s = symbols[currency];
-  return { text: upTo ? `${s}${money(amount)} to ${s}${money(upTo)}` : `${s}${money(amount)}`, note };
+  return { text: upTo ? `${s}${money(amount)} to ${s}${money(upTo)}` : `${s}${money(amount)}`, note, source: sourceOf(p, 'price') };
 }
 
 /** Real counts for the sourcing section. */
