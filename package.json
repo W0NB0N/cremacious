@@ -11,7 +11,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
-    "data:urls": "tsx scripts/check-urls.mts"
+    "data:urls": "tsx scripts/check-urls.mts",
+    "data:cited": "tsx scripts/check-cited.mts"
   },
   "dependencies": {
     "gsap": "^3.15.0",
