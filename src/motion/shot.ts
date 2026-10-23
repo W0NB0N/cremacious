@@ -15,8 +15,9 @@
 // no cup; the theme steps to dark when the catalogue reaches the middle of the screen.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { isTouch, onPage, prefersReducedMotion, scrollState } from '@/engine';
+import { isTouch, onPage, prefersReducedMotion, scrollLimit, scrollState } from '@/engine';
 import { shot } from '@/data/site';
+import { anchoredProgress } from './progress';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +49,8 @@ const st = {
   level: -1, tilt: 0, lastVel: 0, hp: 1, heroEnd: 0, lastMove: 0,
   pour: 0, lipX: -1, lipY: -1, angle: 0,
   pinned: null as number | null,
+  heroEndY: 0, // px scroll where the hero lets go of the cup
+  p: 0,
   pinBelow: null as HTMLElement | null, // a page can settle the surface just under one element
   fixed: null as [number, number] | null,
 };
@@ -78,6 +81,7 @@ function pulled(p: number) {
   if (p <= he) return HERO_SHARE * smooth(0, 1, p / he);
   return HERO_SHARE + (1 - HERO_SHARE) * clamp01((p - he) / (0.96 - he));
 }
+const scroll = anchoredProgress();
 const levelFor = (p: number) => { const b = base(); return b + (H + 70 - b) * pulled(p); };
 
 function resize() {
@@ -356,7 +360,8 @@ function rest(p: number, time: number) {
 function tick(time: number) {
   if (!W || document.hidden) return;
   const r = Math.min(4, gsap.ticker.deltaRatio(60));
-  const p = st.pinned ?? scrollState().progress;
+  if (st.pinned === null) { st.p = scroll.at(scrollState().y, scrollLimit()); st.heroEnd = st.heroEndY ? scroll.map(st.heroEndY) : 0; }
+  const p = st.pinned ?? st.p;
   const target = st.pinBelow ? H - (st.pinBelow.getBoundingClientRect().bottom + 22) : levelFor(p);
   st.level = st.level < 0 ? target : st.level + (target - st.level) * (1 - Math.pow(0.9, r));
   pointer.lean += ((pointer.x >= 0 ? pointer.x / W - 0.5 : 0) - pointer.lean) * (1 - Math.pow(0.95, r));
@@ -428,11 +433,12 @@ export function startShot() {
     cupHandle = document.querySelector('[data-cup-handle]');
     st.hp = cupBody ? 0 : 1;
     const hero = document.querySelector('[data-hero]');
-    st.heroEnd = 0;
+    st.heroEnd = st.heroEndY = 0;
+    scroll.reset();
     if (hero) ScrollTrigger.create({
       trigger: hero, start: 'top top', end: 'bottom bottom',
       onUpdate: (s) => { st.hp = s.progress; },
-      onRefresh: (s) => { const max = ScrollTrigger.maxScroll(window); st.heroEnd = max > 0 ? s.end / max : 0; },
+      onRefresh: (s) => { st.heroEndY = s.end; },
     });
     return () => { st.pinBelow = null; cupStage = cupBody = cupShadow = null; cupHandle = null; cupLiquid = null; cupFill = cupCrema = null; st.pour = 0; drops.length = 0; };
   });
