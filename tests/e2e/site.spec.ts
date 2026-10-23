@@ -129,3 +129,17 @@ test.describe('accessibility (axe)', () => {
     expect(r.violations.map((v) => `${v.id}: ${v.nodes.length}`)).toEqual([]);
   });
 });
+
+test.describe('forced colors', () => {
+  test.use({ forcedColors: 'active' });
+
+  test('no liquid layers or custom pointer; content stays visible', async ({ page }) => {
+    const errors = watchErrors(page);
+    await open(page);
+    await expect(page.locator('html')).not.toHaveClass(/\bshot-live\b/);
+    for (const sel of ['canvas.shot', 'canvas.stream', '.pool', '.readout', '.pointer']) await expect(page.locator(sel).first()).toBeHidden();
+    await page.mouse.wheel(0, 4000);
+    await expect(page.getByRole('heading', { name: /catalogue/i })).toBeVisible();
+    expect(errors).toEqual([]);
+  });
+});

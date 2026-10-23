@@ -11,11 +11,11 @@
 // narrow canvases (.stream). The strip and the pool meet at one integer pixel row.
 //
 // Idle: ripples on the ticker clock, a meniscus at the walls, crema bubbles drifting, and the
-// pointer (or scroll velocity on touch) disturbing the surface. Reduced motion: no canvases,
+// pointer (or scroll velocity on touch) disturbing the surface. Reduced motion or forced colours: no canvases,
 // no cup; the theme steps to dark when the catalogue reaches the middle of the screen.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { isTouch, onPage, prefersReducedMotion, scrollLimit, scrollState } from '@/engine';
+import { forcedColors, isTouch, onPage, prefersReducedMotion, scrollLimit, scrollState } from '@/engine';
 import { shot } from '@/data/site';
 import { anchoredProgress } from './progress';
 
@@ -389,7 +389,8 @@ function reducedPath() {
 
 /** Call once from setupMotion. */
 export function startShot() {
-  if (prefersReducedMotion()) return reducedPath();
+  // Forced colours repaint the pool divs but not the canvases, so the blend falls apart: no liquid.
+  if (prefersReducedMotion() || forcedColors()) return reducedPath();
   strips = [...document.querySelectorAll<HTMLCanvasElement>('canvas.shot')];
   streams = [...document.querySelectorAll<HTMLCanvasElement>('canvas.stream')];
   pools = [...document.querySelectorAll<HTMLElement>('.pool')];

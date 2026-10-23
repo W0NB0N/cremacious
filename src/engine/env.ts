@@ -1,4 +1,6 @@
 export const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+/** Windows High Contrast and similar: the system picks the colours, so colour effects step aside. */
+export const forcedColors = () => matchMedia('(forced-colors: active)').matches;
 export const isTouch = () => matchMedia('(hover: none), (pointer: coarse)').matches;
 export const isMobile = () => matchMedia('(max-width: 767px)').matches;
 

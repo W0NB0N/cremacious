@@ -389,6 +389,10 @@ html.has-pointer .pointer { display: block; }
 .pointer__bean path { fill: none; stroke: var(--creme); stroke-width: 2.6; stroke-linecap: round; }
 
 /* ---------- The shot: liquid layers and readout ---------- */
+/* Forced colours: the system owns the palette, and the blend layers would only invert it. */
+@media (forced-colors: active) {
+  .pool, .pool-crema, .shot, .stream, .readout, .pointer { display: none !important; }
+}
 .pool, .pool-crema, .shot, .stream {
   position: fixed; left: 0; top: 0; z-index: var(--z-shot);
   pointer-events: none; display: none; will-change: transform;
