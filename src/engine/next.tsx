@@ -1,7 +1,7 @@
 'use client';
 // Next.js App Router adapter. Render <Engine setup={…} /> once, as the LAST child of <body> in the
 // root layout (React runs child effects first, so page components register before the engine boots).
-// `setup` (global motion: transition, loader, background, driver) must come from a client module.
+// `setup` (global motion: transition, driver) must come from a client module.
 // Internal links (plain <a> or next/link) get the leave → push → enter transition automatically.
 // Opt a link out with data-no-transition. Back/forward re-inits the page without the curtain.
 import { useEffect, useRef } from 'react';
@@ -52,7 +52,7 @@ export function Engine({ setup }: { setup?: () => void }) {
   return null;
 }
 
-/** Component-level page code: runs when the page is ready (after the loader), reverted on leave. */
+/** Component-level page code: runs when the page is ready (after boot), reverted on leave. */
 export function usePage(fn: PageFn) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => onPage(fn), []);

@@ -1,6 +1,6 @@
 // Engine core: framework-agnostic page lifecycle. No DOM access at import time (SSR-safe).
 // A framework adapter calls:
-//   boot(setup)            once, on first load: setup → loader → page init → intro
+//   boot(setup)            once, on first load: setup → page init → intro
 //   leave() → cleanup()    before the route swaps (leave can run in parallel with the fetch)
 //   enter()                after the new page is in the DOM: init → enter animation → intro
 // Project code hooks in with onPage(fn): fn runs on every page load inside a gsap.context, so the
@@ -10,13 +10,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initScroll, resetScroll, startScroll, stopScroll } from './scroll';
 import { initReveals } from './reveal';
 import { initMagnetic } from './interactions';
-import { runLoader } from './loader';
 import { playEnter, playLeave } from './transition';
 import { prefersReducedMotion } from './env';
 
 export { onScroll, scrollState, scrollToTarget, stopScroll, startScroll } from './scroll';
 export { setTransition } from './transition';
-export { setLoaderFormat, setLoaderExit } from './loader';
 export { ease, isTouch, isMobile, prefersReducedMotion } from './env';
 
 export type PageFn = (page: { intro: gsap.core.Timeline; path: string }) => void | (() => void);
@@ -60,7 +58,7 @@ function initPage() {
 }
 
 /** First load. `setup` runs once on the client after scroll init and before the first page:
- *  register setTransition, setLoaderFormat, setLoaderExit, setBackground and driver modules there. */
+ *  register setTransition and driver modules there. */
 export async function boot(setup?: () => void) {
   if (booted) return;
   booted = true;
@@ -69,7 +67,6 @@ export async function boot(setup?: () => void) {
   setup?.();
   stopScroll();
   initPage();
-  await runLoader();
   startScroll();
   intro?.play();
 }

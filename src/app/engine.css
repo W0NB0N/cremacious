@@ -63,18 +63,6 @@ html.lenis, html.lenis body { height: auto; }
 /* No CSS transform here: GSAP owns it (CSS translate + yPercent would stack). #curtain visibility hides it. */
 .curtain__panel { position: absolute; inset: 0; background: var(--c-curtain); }
 
-/* Loader skeleton: restyle in the project, keep it covering the first paint */
-#loader {
-  position: fixed; inset: 0; z-index: var(--z-loader);
-  display: grid; align-content: end; padding: var(--gutter);
-  background: var(--c-fg); color: var(--c-bg);
-  clip-path: inset(0% 0% 0% 0%);
-}
-.loader__inner { display: flex; justify-content: space-between; align-items: end; overflow: hidden; }
-.loader__count { font-variant-numeric: tabular-nums; }
-.loader__bar { height: 1px; margin-top: calc(var(--u) * 1.5); background: currentColor; transform: scaleX(0); transform-origin: left; }
-html:not(.js) #loader, #loader[hidden] { display: none; }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
