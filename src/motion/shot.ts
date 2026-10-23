@@ -393,7 +393,11 @@ export function startShot() {
   strips = [...document.querySelectorAll<HTMLCanvasElement>('canvas.shot')];
   streams = [...document.querySelectorAll<HTMLCanvasElement>('canvas.stream')];
   pools = [...document.querySelectorAll<HTMLElement>('.pool')];
-  if (strips.length !== 3 || streams.length !== 2) return;
+  if (strips.length !== 3 || streams.length !== 2) {
+    // layout.tsx renders 3 canvas.shot and 2 canvas.stream; anything else means the markup drifted.
+    console.warn(`startShot: expected 3 canvas.shot and 2 canvas.stream, found ${strips.length} and ${streams.length}. The liquid is off.`);
+    return;
+  }
   [inv, lift, crema] = strips.map((c) => c.getContext('2d')!);
   [sInv, sLift] = streams.map((c) => c.getContext('2d')!);
   document.documentElement.classList.add('shot-live');

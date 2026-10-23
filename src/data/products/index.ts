@@ -2,7 +2,7 @@ import { accessories } from './accessories';
 import { beans } from './beans';
 import { grinders } from './grinders';
 import { machines } from './machines';
-import { isPlaceholder, type CategoryId, type Placeholder, type Price, type Product, type Qty, type Source } from './types';
+import { isPlaceholder, type CategoryId, type Placeholder, type Price, type Product, type Qty, type Source, type SpecKey } from './types';
 
 export * from './types';
 
@@ -19,9 +19,9 @@ export const byCategory = (c: CategoryId) => products.filter((p) => p.category =
 export const categoryOf = (c: CategoryId) => categories.find((x) => x.id === c)!;
 
 /** One row of the comparison table. `bar` draws a magnitude bar for numeric values (size, not merit). */
-export type Row = { key: string; label: string; bar?: boolean };
+export type Row<K extends string = string> = { key: K; label: string; bar?: boolean };
 
-export const rows: Record<CategoryId, Row[]> = {
+export const rows: { [C in CategoryId]: Row<SpecKey<C>>[] } = {
   grinders: [
     { key: 'drive', label: 'Drive' },
     { key: 'burrs', label: 'Burrs' },
@@ -67,7 +67,7 @@ export const rows: Record<CategoryId, Row[]> = {
 };
 
 /** The headline spec shown in a catalogue row. */
-export const keySpec: Record<CategoryId, string> = {
+export const keySpec: { [C in CategoryId]: SpecKey<C> } = {
   grinders: 'burrSize',
   machines: 'heating',
   beans: 'notes',

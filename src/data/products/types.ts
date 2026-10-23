@@ -89,3 +89,6 @@ export type AccessorySpecs = {
 export type Accessory = Base<'accessories', AccessorySpecs> & { specs: AccessorySpecs };
 
 export type Product = Bean | Grinder | Machine | Accessory;
+
+/** Spec keys per category, so table rows can only name keys that exist. */
+export type SpecKey<C extends CategoryId> = keyof { beans: BeanSpecs; grinders: GrinderSpecs; machines: MachineSpecs; accessories: AccessorySpecs }[C] & string;
