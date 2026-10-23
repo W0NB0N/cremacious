@@ -291,9 +291,11 @@ html.frame-solid .header { background: var(--c-bg); }
 .table-hint { display: none; }
 .cards { display: none; }
 .table td { font-size: var(--t-body); line-height: 1.4; }
-.val { display: block; }
+.val { display: inline; }
 .val--unconfirmed { color: var(--c-muted); font-style: italic; }
 .val__note { display: block; margin-top: 0.3rem; color: var(--c-muted); font-size: var(--t-xs); line-height: 1.4; max-width: 30ch; }
+.val__src { display: inline-block; margin-left: 0.15em; padding: 0.1em 0.25em; color: var(--c-muted); font-size: var(--t-xs); text-decoration: none; }
+.val__src:hover, .val__src:focus-visible { color: var(--c-fg); }
 .bar { display: block; height: 3px; margin-top: 0.55rem; background: var(--c-line); max-width: 14rem; }
 .bar__fill { display: block; height: 100%; background: var(--c-fg); transform-origin: left; transition: scale 0.9s var(--ease-out); }
 .table__sources ul { list-style: none; padding: 0; display: grid; gap: 0.4rem; font-size: var(--t-s); }
