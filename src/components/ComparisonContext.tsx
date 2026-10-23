@@ -14,7 +14,7 @@ type Api = State & {
 
 const Ctx = createContext<Api | null>(null);
 
-const initial: State = {
+export const initial: State = {
   category: 'grinders',
   picks: {
     grinders: ['timemore-sculptor-078s', 'fellow-ode-gen-2', 'eureka-mignon-specialita'],
