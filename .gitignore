@@ -60,3 +60,7 @@ CLAUDE.md
 DESIGN.md
 AGENTS.md
 skills-lock.json
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
