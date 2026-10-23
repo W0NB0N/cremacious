@@ -3,7 +3,7 @@
 //
 // The liquid is a stack of fixed blend layers over the page (DESIGN.md, "Legibility at the liquid line"):
 //   invert  difference, white          → every pixel becomes 255 - x
-//   lift    plus-lighter, rgb(47 16 1) → together: S - x, the exact palette inverse
+//   lift    plus-lighter, palette lift → together: S - x, the exact palette inverse
 //   crema   multiply, the crema band   → brown text stays dark on the tan foam
 // So a glyph that crosses the surface is crème below the line and espresso above it.
 // For speed, only a thin strip around the surface is a canvas (.shot); the deep coffee under
@@ -17,6 +17,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { forcedColors, isTouch, onPage, prefersReducedMotion, scrollLimit, scrollState } from '@/engine';
 import { shot } from '@/data/site';
+import { foam as foamColor, lift as liftColor, sheen as sheenColor } from '@/app/palette';
 import { anchoredProgress } from './progress';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -273,35 +274,35 @@ function draw() {
   inv.fill(body);
   const sheenTop = bottom - 4;
   const sheen = lift.createLinearGradient(0, sheenTop, 0, sheenTop + 48);
-  sheen.addColorStop(0, 'rgb(64 30 12)'); // a little light just under the crema
-  sheen.addColorStop(1, 'rgb(47 16 1)');
+  sheen.addColorStop(0, sheenColor); // a little light just under the crema
+  sheen.addColorStop(1, liftColor);
   lift.fillStyle = sheen;
   lift.fill(body);
-  lift.fillStyle = 'rgb(47 16 1)';
+  lift.fillStyle = liftColor;
   for (const d of drops) {
     const p = new Path2D(); p.arc(d.x, d.y, d.r, 0, Math.PI * 2);
     inv.fill(p); lift.fill(p);
   }
 
   // 3: the crema band, multiplied over whatever is under it
-  crema.fillStyle = '#d6a66b';
+  crema.fillStyle = foamColor.mid;
   crema.fill(band);
   crema.save();
   crema.clip(band);
   const edge = new Path2D();
   edge.moveTo(-2, ys[0] + 2);
   trace(edge, (i) => ys[i] + 2);
-  crema.lineWidth = 3.5; crema.strokeStyle = '#ecd6b1'; crema.stroke(edge); // pale top of the foam
+  crema.lineWidth = 3.5; crema.strokeStyle = foamColor.top; crema.stroke(edge); // pale top of the foam
   const under = new Path2D();
   under.moveTo(-2, ys[0] + foam[0]);
   trace(under, (i) => ys[i] + foam[i]);
-  crema.lineWidth = 4; crema.strokeStyle = '#b77a3f'; crema.stroke(under); // darker where it meets the coffee
+  crema.lineWidth = 4; crema.strokeStyle = foamColor.base; crema.stroke(under); // darker where it meets the coffee
   for (const b of bubbles) {
     const x = b.x * W, i = Math.round(b.x * N);
     const y = ys[i] + foam[i] * b.d;
     crema.beginPath();
     crema.arc(x, y, b.dark ? b.r * 0.55 : b.r, 0, Math.PI * 2);
-    crema.fillStyle = b.dark ? 'rgb(150 96 48 / 0.7)' : '#f2e0c0';
+    crema.fillStyle = b.dark ? foamColor.bubbleDark : foamColor.bubble;
     crema.fill();
   }
   crema.restore();
@@ -311,7 +312,7 @@ function draw() {
   glint.moveTo(-2, ys[0]);
   trace(glint, (i) => ys[i]);
   lift.lineWidth = 1.2;
-  lift.strokeStyle = 'rgb(255 236 210 / 0.22)';
+  lift.strokeStyle = foamColor.glint;
   lift.stroke(glint);
 }
 
@@ -327,7 +328,7 @@ function drawStream() {
   if (x0 !== streamX) { place(streams, x0, 0); streamX = x0; }
   [sInv, sLift].forEach((x) => { x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, SW * dpr, H * dpr); x.setTransform(dpr, 0, 0, dpr, -x0 * dpr, 0); });
   sInv.fillStyle = '#fff'; sInv.fill(path);
-  sLift.fillStyle = 'rgb(47 16 1)'; sLift.fill(path);
+  sLift.fillStyle = liftColor; sLift.fill(path);
 }
 
 /** First matching element that is actually rendered (routers may keep old pages hidden). */

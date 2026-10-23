@@ -206,7 +206,7 @@ html.frame-solid .header { background: var(--c-bg); }
 .cup__rim { stroke: var(--espresso); stroke-width: 4; stroke-linecap: round; }
 .cup__shadow {
   position: absolute; left: 30%; right: 18%; bottom: -3%; height: 8%;
-  background: radial-gradient(closest-side, rgb(60 39 34 / 0.28), transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--espresso) 28%, transparent), transparent);
 }
 
 /* ---------- Sourcing ---------- */
@@ -400,11 +400,11 @@ html.has-pointer .pointer { display: block; }
 html.motion .pool, html.motion .shot, html.motion .stream, html.motion:not(.shot-live) .pool-crema { display: block; }
 .pool { width: 100%; height: 100lvh; transform: translate3d(0, calc(100svh - clamp(72px, 11svh, 120px)), 0); }
 .pool--invert { background: #fff; mix-blend-mode: difference; }
-.pool--lift { background: rgb(47 16 1); mix-blend-mode: plus-lighter; }
+.pool--lift { background: var(--lift); mix-blend-mode: plus-lighter; }
 .pool-crema {
   width: 100%; height: 12px; mix-blend-mode: multiply;
   transform: translate3d(0, calc(100svh - clamp(72px, 11svh, 120px) - 12px), 0);
-  background: linear-gradient(#ecd6b1, #d6a66b 55%, #b77a3f);
+  background: linear-gradient(var(--foam-top), var(--foam-mid) 55%, var(--foam-base));
 }
 .shot { width: 100%; height: 300px; transform: translate3d(0, 100lvh, 0); }
 .stream { width: 200px; height: 100lvh; visibility: hidden; }
