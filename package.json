@@ -9,7 +9,7 @@
     "lint": "eslint",
     "data:check": "tsx scripts/check-data.mts",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test:e2e": "playwright test",
     "data:urls": "tsx scripts/check-urls.mts",
     "data:cited": "tsx scripts/check-cited.mts",
