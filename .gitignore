@@ -64,3 +64,6 @@ skills-lock.json
 /test-results/
 /playwright-report/
 /blob-report/
+
+# backend runtime state (snapshot + price history)
+/backend/.data/

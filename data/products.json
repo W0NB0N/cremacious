@@ -1,0 +1,2194 @@
+[
+  {
+    "id": "timemore-chestnut-c3s",
+    "category": "grinders",
+    "brand": "Timemore",
+    "name": "Chestnut C3S",
+    "price": {
+      "amount": 6785,
+      "currency": "INR",
+      "note": "Brewing Gadgets, regular price, in stock"
+    },
+    "summary": "An entry hand grinder with 38 mm stainless steel conical burrs and an internal dial.",
+    "specs": {
+      "drive": "Hand",
+      "burrs": "Conical, stainless steel",
+      "burrSize": {
+        "value": 38,
+        "unit": "mm"
+      },
+      "adjustment": "Dial: 12 clicks per rotation (Classic) or 30 (Espresso); the page does not say which ships",
+      "capacity": {
+        "value": 20,
+        "unit": "g"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "Hand powered; no grind rate is published."
+      },
+      "power": "None",
+      "weight": {
+        "placeholder": true,
+        "note": "No fetched page states the weight."
+      },
+      "size": "147 × 52 mm body, 159 mm handle",
+      "use": "Espresso to French press"
+    },
+    "sources": [
+      {
+        "label": "Brewing Gadgets, product page",
+        "url": "https://brewinggadgets.in/products/timemore-chestnut-c3s-coffee-grinder-black"
+      },
+      {
+        "label": "Timemore, C3 series page",
+        "url": "https://www.timemore.com/products/c3-series"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 1,
+      "burrSize": 1,
+      "adjustment": 1,
+      "capacity": 0,
+      "size": 0,
+      "use": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "kingrinder-k6",
+    "category": "grinders",
+    "brand": "Kingrinder",
+    "name": "K6",
+    "price": {
+      "amount": 12999,
+      "currency": "INR",
+      "note": "Fix Coffee sale price; MRP ₹13,999"
+    },
+    "summary": "A hand grinder with 48 mm heptagonal stainless steel burrs and an external 16 μm-per-click ring.",
+    "specs": {
+      "drive": "Hand",
+      "burrs": "Heptagonal, uncoated SUS420 stainless steel",
+      "burrSize": {
+        "value": 48,
+        "unit": "mm"
+      },
+      "adjustment": "External ring, 60 clicks per rotation (16 μm per click)",
+      "capacity": {
+        "value": 30,
+        "unit": "g",
+        "text": "25 to 30 g"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "Hand powered; no grind rate is published."
+      },
+      "power": "None",
+      "weight": {
+        "value": 0.63,
+        "unit": "kg",
+        "text": "About 630 g"
+      },
+      "size": {
+        "placeholder": true,
+        "note": "No fetched page states the dimensions."
+      },
+      "use": "Espresso and filter"
+    },
+    "sources": [
+      {
+        "label": "Fix Coffee, product page",
+        "url": "https://fixcoffee.shop/products/kingrinder-k6"
+      },
+      {
+        "label": "Kingrinder, product page",
+        "url": "https://www.kingrinder.com/store/products/k6"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 0,
+      "burrSize": 0,
+      "adjustment": 0,
+      "capacity": 1,
+      "weight": 0,
+      "use": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "1zpresso-q-air",
+    "category": "grinders",
+    "brand": "1Zpresso",
+    "name": "Q Air",
+    "price": {
+      "amount": 6499,
+      "currency": "INR",
+      "note": "Fix Coffee sale price; MRP ₹8,499"
+    },
+    "summary": "A 365 g hand grinder with 38 mm stainless steel burrs, sized to fit inside an AeroPress plunger.",
+    "specs": {
+      "drive": "Hand",
+      "burrs": "Heptagonal, SUS420 stainless steel",
+      "burrSize": {
+        "value": 38,
+        "unit": "mm"
+      },
+      "adjustment": "Internal, 30 clicks per rotation (25 μm per click)",
+      "capacity": {
+        "value": 20,
+        "unit": "g",
+        "text": "15 to 20 g"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "Hand powered; no grind rate is published."
+      },
+      "power": "None",
+      "weight": {
+        "value": 0.365,
+        "unit": "kg",
+        "text": "365 g"
+      },
+      "size": "14.5 × 15 × 4.6 cm",
+      "use": "Filter (pour-over)"
+    },
+    "sources": [
+      {
+        "label": "Fix Coffee, product page",
+        "url": "https://fixcoffee.shop/products/1zpresso-q-air-manual-coffee-grinder-ultra-portable-hand-grinder"
+      },
+      {
+        "label": "1Zpresso, product page",
+        "url": "https://1zpresso.coffee/product/qair/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 0,
+      "burrSize": 0,
+      "adjustment": 0,
+      "capacity": 1,
+      "weight": 1,
+      "size": 1,
+      "use": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "1zpresso-k-ultra",
+    "category": "grinders",
+    "brand": "1Zpresso",
+    "name": "K-Ultra",
+    "price": {
+      "amount": 27999,
+      "currency": "INR",
+      "note": "Fix Coffee sale price; MRP ₹29,999"
+    },
+    "summary": "A hand grinder with a 48 mm stainless steel conical burr and a 100-click external ring.",
+    "specs": {
+      "drive": "Hand",
+      "burrs": "Heptagonal conical, stainless steel",
+      "burrSize": {
+        "value": 48,
+        "unit": "mm"
+      },
+      "adjustment": "External ring, 100 clicks per rotation (20 μm per click)",
+      "capacity": {
+        "value": 40,
+        "unit": "g",
+        "text": "35 to 40 g"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "Hand powered; no grind rate is published."
+      },
+      "power": "None",
+      "weight": {
+        "value": 0.7,
+        "unit": "kg",
+        "text": "700 g"
+      },
+      "size": "19.5 × 18.5 × 6 cm",
+      "use": "Espresso and filter"
+    },
+    "sources": [
+      {
+        "label": "Fix Coffee, product page",
+        "url": "https://fixcoffee.shop/products/1zpresso-k-ultra-manual-coffee-grinder"
+      },
+      {
+        "label": "1Zpresso, product page",
+        "url": "https://1zpresso.coffee/product/kultra/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 0,
+      "burrSize": 0,
+      "adjustment": 0,
+      "capacity": 1,
+      "weight": 1,
+      "size": 1,
+      "use": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "comandante-c40-mk4",
+    "category": "grinders",
+    "brand": "Comandante",
+    "name": "C40 MK4",
+    "price": {
+      "amount": 33925,
+      "currency": "INR",
+      "note": "Brewing Gadgets, Natural Wood finish; the three wood options are the same price"
+    },
+    "summary": "A hand grinder with 39 mm high-nitrogen stainless steel conical burrs and stepped clicks.",
+    "specs": {
+      "drive": "Hand",
+      "burrs": "Conical, high-nitrogen stainless steel",
+      "burrSize": {
+        "value": 39,
+        "unit": "mm",
+        "text": "39 mm outer, 30 mm inner"
+      },
+      "adjustment": "Stepped clicks",
+      "capacity": {
+        "value": 40,
+        "unit": "g",
+        "text": "40 g per bean jar"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "Hand powered; no grind rate is published."
+      },
+      "power": "None",
+      "weight": {
+        "value": 0.74,
+        "unit": "kg",
+        "text": "740 g"
+      },
+      "size": "2.4 in diameter, 6.3 in tall",
+      "use": "Turkish and espresso to cold brew"
+    },
+    "sources": [
+      {
+        "label": "Brewing Gadgets, product page",
+        "url": "https://brewinggadgets.in/products/comandante-c40-mk4-nitro-blade-coffee-grinder-natural-wood"
+      },
+      {
+        "label": "Comandante, product page",
+        "url": "https://comandantegrinder.com/products/c40-mk4-nitro-blade-black"
+      },
+      {
+        "label": "Prima Coffee, product listing",
+        "url": "https://prima-coffee.com/equipment/comandante/c40-mk4-coman-pp"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 2,
+      "burrSize": 2,
+      "adjustment": 2,
+      "capacity": 1,
+      "weight": 0,
+      "size": 2,
+      "use": 2
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "baratza-encore-esp",
+    "category": "grinders",
+    "brand": "Baratza",
+    "name": "Encore ESP",
+    "price": {
+      "amount": 23428,
+      "currency": "INR",
+      "note": "Brewing Gadgets, regular price, in stock"
+    },
+    "summary": "An entry electric grinder with 40 mm conical burrs and 40 steps from espresso to filter.",
+    "specs": {
+      "drive": "Electric",
+      "burrs": "Conical (M2 burrs)",
+      "burrSize": {
+        "value": 40,
+        "unit": "mm"
+      },
+      "adjustment": "40 steps, espresso to filter",
+      "capacity": {
+        "value": 300,
+        "unit": "g",
+        "text": "300 g hopper (one other retailer lists 230 g)"
+      },
+      "speed": {
+        "value": 550,
+        "unit": "rpm"
+      },
+      "power": {
+        "value": 80,
+        "unit": "W",
+        "text": "80 W at 220–240 V"
+      },
+      "weight": {
+        "value": 3.1,
+        "unit": "kg"
+      },
+      "size": "130 × 150 × 340 mm (W × D × H; another retailer lists 120 × 160 × 350)",
+      "use": "Espresso and filter"
+    },
+    "sources": [
+      {
+        "label": "Brewing Gadgets, product page",
+        "url": "https://brewinggadgets.in/products/baratza-encore-esp-black"
+      },
+      {
+        "label": "Home Coffee Solutions, product listing",
+        "url": "https://www.homecoffeesolutions.com/products/baratza-encore-esp-conical-burr-coffee-grinder-white"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 0,
+      "burrSize": 0,
+      "adjustment": 0,
+      "capacity": 0,
+      "speed": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 0,
+      "use": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "fellow-ode-gen-2",
+    "category": "grinders",
+    "brand": "Fellow",
+    "name": "Ode Gen 2",
+    "price": {
+      "amount": 52569,
+      "currency": "INR",
+      "note": "Brewing Gadgets, regular price, in stock"
+    },
+    "summary": "A flat-burr grinder built for filter brewing. The maker says it is not for espresso.",
+    "specs": {
+      "drive": "Electric",
+      "burrs": "Flat, stainless steel",
+      "burrSize": {
+        "value": 64,
+        "unit": "mm"
+      },
+      "adjustment": "11 settings, 31 steps",
+      "capacity": {
+        "value": 100,
+        "unit": "g"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "Burr speed is not published."
+      },
+      "power": {
+        "value": 140,
+        "unit": "W",
+        "text": "140 W at 220 V"
+      },
+      "weight": {
+        "value": 4.6,
+        "unit": "kg"
+      },
+      "size": "239 × 105 × 248.3 mm (L × W × H)",
+      "use": "Filter only"
+    },
+    "sources": [
+      {
+        "label": "Brewing Gadgets, product page",
+        "url": "https://brewinggadgets.in/products/fellow-ode-brew-grinder-gen2"
+      },
+      {
+        "label": "Fellow, product page",
+        "url": "https://fellowproducts.com/products/ode-brew-grinder-gen-2"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 1,
+      "burrSize": 1,
+      "adjustment": 1,
+      "capacity": 1,
+      "power": 0,
+      "weight": 1,
+      "size": 1,
+      "use": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "df64-gen-2",
+    "category": "grinders",
+    "brand": "DF64",
+    "name": "Gen 2",
+    "price": {
+      "amount": 43200,
+      "currency": "INR",
+      "note": "Brewing Gadgets sale price; listed at ₹44,000"
+    },
+    "summary": "A single-dose grinder with 64 mm flat burrs and a 250 W motor.",
+    "specs": {
+      "drive": "Electric",
+      "burrs": "Flat, stainless steel",
+      "burrSize": {
+        "value": 64,
+        "unit": "mm"
+      },
+      "adjustment": "Stepless",
+      "capacity": {
+        "value": 50,
+        "unit": "g",
+        "text": "About 50 g with bellows"
+      },
+      "speed": {
+        "placeholder": true,
+        "note": "The maker lists a fixed speed but gives no rpm."
+      },
+      "power": {
+        "value": 250,
+        "unit": "W"
+      },
+      "weight": {
+        "value": 6.8,
+        "unit": "kg"
+      },
+      "size": "225 × 130 × 300 mm (Turin lists about 10 × 5.2 × 12 in)",
+      "use": "Espresso and filter (from the Gen 2.7 page)"
+    },
+    "sources": [
+      {
+        "label": "Brewing Gadgets, product page",
+        "url": "https://brewinggadgets.in/products/df64-gen2"
+      },
+      {
+        "label": "Turin Grinders, DF64 Gen 2.7 page",
+        "url": "https://www.turingrinders.com/products/turin-df64-gen-2-single-dose-coffee-grinder-1"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 0,
+      "burrSize": 0,
+      "adjustment": 1,
+      "capacity": 1,
+      "power": 0,
+      "weight": 0,
+      "size": 0,
+      "use": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "eureka-mignon-specialita",
+    "category": "grinders",
+    "brand": "Eureka",
+    "name": "Mignon Specialità",
+    "price": {
+      "amount": 53850,
+      "currency": "INR",
+      "note": "Coffee Plus, Black finish, listed as sold out on the day checked; other finishes cost more"
+    },
+    "summary": "A compact espresso grinder with 55 mm flat burrs and stepless micrometric adjustment.",
+    "specs": {
+      "drive": "Electric",
+      "burrs": "Flat, hardened steel",
+      "burrSize": {
+        "value": 55,
+        "unit": "mm"
+      },
+      "adjustment": "Stepless micrometric",
+      "capacity": {
+        "value": 300,
+        "unit": "g",
+        "text": "300 g hopper"
+      },
+      "speed": {
+        "value": 1350,
+        "unit": "rpm"
+      },
+      "power": {
+        "value": 310,
+        "unit": "W"
+      },
+      "weight": {
+        "value": 5.6,
+        "unit": "kg"
+      },
+      "size": "120 × 140 × 350 mm (W × D × H; Coffee Plus lists 180 mm deep)",
+      "use": "Espresso and filter"
+    },
+    "sources": [
+      {
+        "label": "Coffee Plus, product page",
+        "url": "https://coffeeplus.in/products/eureka-mignon-specialita-grinder"
+      },
+      {
+        "label": "Eureka, product page",
+        "url": "https://www.eureka.co.it/en/products/eureka+1920/mignon+grinders/silent+range/20/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 1,
+      "burrSize": 1,
+      "adjustment": 1,
+      "capacity": 1,
+      "speed": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1,
+      "use": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "timemore-sculptor-078s",
+    "category": "grinders",
+    "brand": "Timemore",
+    "name": "Sculptor 078S",
+    "price": {
+      "amount": 91450,
+      "currency": "INR",
+      "note": "Brewing Gadgets, regular price, in stock"
+    },
+    "summary": "A single-dose electric grinder with 78 mm flat burrs, a 400 W motor and variable speed.",
+    "specs": {
+      "drive": "Electric",
+      "burrs": "Flat",
+      "burrSize": {
+        "value": 78,
+        "unit": "mm"
+      },
+      "adjustment": "Stepless dial (multi-purpose configurations)",
+      "capacity": {
+        "placeholder": true,
+        "note": "Sold as single dose; no fetched page gives a hopper figure."
+      },
+      "speed": {
+        "value": 1400,
+        "unit": "rpm",
+        "text": "800 to 1400 rpm"
+      },
+      "power": {
+        "value": 400,
+        "unit": "W"
+      },
+      "weight": {
+        "value": 6.5,
+        "unit": "kg"
+      },
+      "size": "261 × 118 × 294 mm (L × W × H)",
+      "use": "Espresso and filter"
+    },
+    "sources": [
+      {
+        "label": "Brewing Gadgets, product page",
+        "url": "https://brewinggadgets.in/products/timemore-sculptor-078s-electric-grinder"
+      },
+      {
+        "label": "Timemore, Sculptor series page",
+        "url": "https://www.timemore.com/products/timemore-electric-coffee-grinder-sculptor-series"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "burrs": 0,
+      "burrSize": 0,
+      "adjustment": 1,
+      "speed": 0,
+      "power": 0,
+      "weight": 0,
+      "size": 0,
+      "use": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "delonghi-dedica-style-ec685",
+    "category": "machines",
+    "brand": "De’Longhi",
+    "name": "Dedica Style EC685",
+    "price": {
+      "amount": 20999,
+      "currency": "INR",
+      "note": "Selling price on the EC685.R page; shown sold out on 23 Oct 2026"
+    },
+    "summary": "A 15 cm wide thermoblock machine with a steam wand, made for small counters.",
+    "specs": {
+      "heating": "Thermoblock",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "Thermoblock: no boiler volume applies."
+      },
+      "steamBoiler": "None",
+      "pump": "Pump, 15 bar",
+      "temperature": {
+        "placeholder": true,
+        "note": "Neither page lists temperature control."
+      },
+      "portafilter": {
+        "placeholder": true,
+        "note": "The maker page does not give the portafilter size."
+      },
+      "reservoir": {
+        "value": 1.1,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1300,
+        "unit": "W",
+        "text": "1300 W at 220 to 240 V"
+      },
+      "weight": {
+        "value": 4.22,
+        "unit": "kg"
+      },
+      "size": "149 × 330 × 305 mm (axis order not stated by the maker)"
+    },
+    "sources": [
+      {
+        "label": "Something’s Brewing, EC685.R listing (price)",
+        "url": "https://somethingsbrewing.in/products/delonghi-ec685-r-1350-watt-semi-automatic-espresso-coffee-machine-1"
+      },
+      {
+        "label": "De’Longhi, EC685.BK product page",
+        "url": "https://www.delonghi.com/en/p/dedica-manual-espresso-makers-dedica-style-manual-coffee-maker-ec685.bk/EC685.BK.html?pid=0132106140"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "pump": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "gaggia-espresso-evolution",
+    "category": "machines",
+    "brand": "Gaggia",
+    "name": "Espresso Evolution",
+    "price": {
+      "amount": 32999,
+      "currency": "INR",
+      "note": "Selling price; MRP ₹39,999"
+    },
+    "summary": "An entry machine with a stainless steel boiler, a 15 bar pump and a pannarello steam wand.",
+    "specs": {
+      "heating": "Stainless steel boiler",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "The maker does not list boiler volume."
+      },
+      "steamBoiler": "None",
+      "pump": "Pump, 15 bar",
+      "temperature": "PID (marked on the maker’s page)",
+      "portafilter": {
+        "placeholder": true,
+        "note": "The maker lists an ABS and stainless steel filter-holder but no diameter."
+      },
+      "reservoir": {
+        "value": 1.2,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1900,
+        "unit": "W",
+        "text": "1900 W at 230 V"
+      },
+      "weight": {
+        "value": 3.7,
+        "unit": "kg"
+      },
+      "size": "199 × 255 × 303 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Caramelly, product listing (price)",
+        "url": "https://caramelly.in/products/gaggia-espresso-evolution-coffee-machine"
+      },
+      {
+        "label": "Gaggia, Espresso Evolution product page",
+        "url": "https://www.gaggia.com/manual-machines/espresso-evolution/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "pump": 1,
+      "temperature": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "gaggia-classic-pro-e24",
+    "category": "machines",
+    "brand": "Gaggia",
+    "name": "Classic E24",
+    "price": {
+      "amount": 64990,
+      "currency": "INR",
+      "note": "Selling price; MRP ₹74,999. Same price for all colours"
+    },
+    "summary": "A brass-boiler manual machine with a 58 mm stainless portafilter and a three-way solenoid valve.",
+    "specs": {
+      "heating": "Lead-free brass boiler and group",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "The maker says the new boiler is larger but gives no volume."
+      },
+      "steamBoiler": "None",
+      "pump": "Pump, 15 bar nominal",
+      "temperature": {
+        "placeholder": true,
+        "note": "The maker’s page does not list temperature control."
+      },
+      "portafilter": {
+        "value": 58,
+        "unit": "mm"
+      },
+      "reservoir": {
+        "value": 2.1,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1200,
+        "unit": "W",
+        "text": "1200 W at 230 V"
+      },
+      "weight": {
+        "value": 8.1,
+        "unit": "kg",
+        "text": "8.1 kg (the retailer says about 7.3 kg)"
+      },
+      "size": "200 × 270 × 355 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Caramelly, Classic E24 listing (price)",
+        "url": "https://caramelly.in/products/gaggia-classic-color-vibes-coffee-machine"
+      },
+      {
+        "label": "Gaggia, Classic E24 product page",
+        "url": "https://www.gaggia.com/manual-machines/new-classic-e24/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "pump": 1,
+      "portafilter": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "lelit-anna-pid",
+    "category": "machines",
+    "brand": "Lelit",
+    "name": "Anna PID",
+    "price": {
+      "amount": 67799,
+      "currency": "INR",
+      "note": "Selling price; MRP ₹74,999"
+    },
+    "summary": "A compact single-boiler machine with a PID display, a pressure gauge and a 57 mm group.",
+    "specs": {
+      "heating": "Single boiler, brass",
+      "brewBoiler": {
+        "value": 0.25,
+        "unit": "L"
+      },
+      "steamBoiler": "None",
+      "pump": "Pump, 15 bar (type not stated)",
+      "temperature": "PID controller with display",
+      "portafilter": {
+        "value": 57,
+        "unit": "mm"
+      },
+      "reservoir": {
+        "value": 2.7,
+        "unit": "L"
+      },
+      "power": {
+        "placeholder": true,
+        "note": "Neither page lists wattage; the maker gives 220 to 240 V only."
+      },
+      "weight": {
+        "value": 7.5,
+        "unit": "kg"
+      },
+      "size": "230 × 380 × 340 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Something’s Brewing, Anna PID listing",
+        "url": "https://somethingsbrewing.in/products/lelit-anna-with-pid-silver-coffee-machine-espresso-machine"
+      },
+      {
+        "label": "Lelit, Anna PL41TEM product page",
+        "url": "https://www.lelit.com/product/anna-pl41tem/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "brewBoiler": 1,
+      "pump": 0,
+      "temperature": 1,
+      "portafilter": 0,
+      "reservoir": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "rancilio-silvia-v6",
+    "category": "machines",
+    "brand": "Rancilio",
+    "name": "Silvia",
+    "price": {
+      "amount": 89999,
+      "currency": "INR",
+      "note": "Selling price on the Silvia V6 page; MRP ₹99,999; shown sold out on 23 Oct 2026"
+    },
+    "summary": "A single-boiler machine with a brass group, a thermostat and a stainless steam wand.",
+    "specs": {
+      "heating": "Single boiler",
+      "brewBoiler": {
+        "value": 0.3,
+        "unit": "L"
+      },
+      "steamBoiler": "None",
+      "pump": "Vibration pump",
+      "temperature": "Thermostat, manual",
+      "portafilter": {
+        "placeholder": true,
+        "note": "Neither page states the portafilter diameter."
+      },
+      "reservoir": {
+        "value": 2,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1150,
+        "unit": "W",
+        "text": "1150 W at 230 V"
+      },
+      "weight": {
+        "value": 14,
+        "unit": "kg"
+      },
+      "size": "235 × 290 × 340 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Something’s Brewing, Silvia V6 listing",
+        "url": "https://somethingsbrewing.in/products/rancilio-silvia-v6-coffee-machine"
+      },
+      {
+        "label": "Rancilio Group, Silvia product page",
+        "url": "https://www.ranciliogroup.com/rancilio/silvia/silvia/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 0,
+      "brewBoiler": 1,
+      "pump": 1,
+      "temperature": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "delonghi-la-specialista-touch",
+    "category": "machines",
+    "brand": "De’Longhi",
+    "name": "La Specialista Touch EC9455.M",
+    "price": {
+      "amount": 65892,
+      "currency": "INR",
+      "note": "Selling price; MRP ₹129,990"
+    },
+    "summary": "A thermoblock machine with a built-in grinder, a touchscreen and an automatic steam wand.",
+    "specs": {
+      "heating": "Thermoblock",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "Thermoblock: no boiler volume applies."
+      },
+      "steamBoiler": "None",
+      "pump": "Pump, 15 bar",
+      "temperature": "4 brew temperature settings",
+      "portafilter": {
+        "placeholder": true,
+        "note": "The maker page does not give the portafilter size."
+      },
+      "reservoir": {
+        "value": 1.8,
+        "unit": "L",
+        "text": "1.8 L (the retailer says 1.7 L)"
+      },
+      "power": {
+        "value": 1450,
+        "unit": "W",
+        "text": "1450 W at 220 to 240 V"
+      },
+      "weight": {
+        "value": 10.4,
+        "unit": "kg",
+        "text": "10.4 kg (the retailer says about 10.8 kg)"
+      },
+      "size": "319 × 367 × 400 mm (axis order not stated by the maker)"
+    },
+    "sources": [
+      {
+        "label": "Caramelly, La Specialista Touch listing (price)",
+        "url": "https://caramelly.in/products/delonghi-la-specialista-touch-ec9455-m-barista-style-espresso-coffee-machine"
+      },
+      {
+        "label": "De’Longhi UK, EC9455.M EX:2 product page",
+        "url": "https://www.delonghi.com/en-gb/p/la-specialista-touch-la-specialista-touch-manual-coffee-maker-ec9455.m-ex2/EC9455.M+EX:2.html?pid=0132126104"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "pump": 1,
+      "temperature": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "breville-barista-express",
+    "category": "machines",
+    "brand": "Breville",
+    "name": "Barista Express",
+    "price": {
+      "amount": 89990,
+      "currency": "INR",
+      "note": "Selling price on the BES870XL / SES875 listing; MRP ₹109,990"
+    },
+    "summary": "A thermocoil machine with an integrated conical burr grinder and a 54 mm portafilter.",
+    "specs": {
+      "heating": "Thermocoil, PID controlled",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "Thermocoil: no boiler volume applies."
+      },
+      "steamBoiler": "None",
+      "pump": "15 bar Italian pump",
+      "temperature": "PID",
+      "portafilter": {
+        "value": 54,
+        "unit": "mm"
+      },
+      "reservoir": {
+        "value": 2,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1850,
+        "unit": "W",
+        "text": "1850 W at 220 to 240 V"
+      },
+      "weight": {
+        "value": 10.4,
+        "unit": "kg",
+        "text": "About 10.4 kg (retailer figure)"
+      },
+      "size": "318 × 351 × 404 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Caramelly, Barista Express listing",
+        "url": "https://caramelly.in/products/sage-breville-the-barista-express-espresso-machine-ses875"
+      },
+      {
+        "label": "Sage UK, BES875 product page",
+        "url": "https://www.sageappliances.com/en-gb/product/bes875"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "pump": 1,
+      "temperature": 1,
+      "portafilter": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 0,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "lelit-mara-x-v3",
+    "category": "machines",
+    "brand": "Lelit",
+    "name": "MaraX V3",
+    "price": {
+      "amount": 199999,
+      "currency": "INR",
+      "note": "Selling price; MRP ₹249,999"
+    },
+    "summary": "A compact heat-exchanger machine with an E61-type group and dual-probe PID on one boiler.",
+    "specs": {
+      "heating": "Heat exchanger, one boiler",
+      "brewBoiler": {
+        "value": 1.8,
+        "unit": "L",
+        "text": "1.8 L (single boiler with a heat exchanger)"
+      },
+      "steamBoiler": "None",
+      "pump": "Silent pump, 9 to 10 bar",
+      "temperature": "Dual-probe PID with thermosyphon circulation",
+      "portafilter": {
+        "value": 58,
+        "unit": "mm"
+      },
+      "reservoir": {
+        "value": 2.5,
+        "unit": "L"
+      },
+      "power": {
+        "placeholder": true,
+        "note": "Neither page lists wattage; the maker gives voltages only."
+      },
+      "weight": {
+        "value": 18.3,
+        "unit": "kg",
+        "text": "18.3 kg (the retailer says 18.5 kg)"
+      },
+      "size": "255 × 535 × 385 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Something’s Brewing, Mara X V3 listing",
+        "url": "https://somethingsbrewing.in/products/marax3-hx-coffee-machine-bss-220-240-50-type-q"
+      },
+      {
+        "label": "Lelit, MaraX3 PL62X3 product page",
+        "url": "https://www.lelit.com/product/marax3-pl62x3/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "brewBoiler": 1,
+      "pump": 0,
+      "temperature": 1,
+      "portafilter": 0,
+      "reservoir": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "la-marzocco-linea-mini",
+    "category": "machines",
+    "brand": "La Marzocco",
+    "name": "Linea Mini",
+    "price": {
+      "amount": 569000,
+      "currency": "INR",
+      "note": "Listed price; the listing does not say which Linea Mini generation"
+    },
+    "summary": "A dual-boiler home machine with a 3 L steam boiler, PID control and a paddle.",
+    "specs": {
+      "heating": "Dual boiler",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "The maker’s page does not list brew boiler volume."
+      },
+      "steamBoiler": {
+        "value": 3,
+        "unit": "L"
+      },
+      "pump": {
+        "placeholder": true,
+        "note": "The maker’s page does not name the pump; it says pressure is adjustable."
+      },
+      "temperature": "PID",
+      "portafilter": {
+        "placeholder": true,
+        "note": "The maker’s page does not give the portafilter size."
+      },
+      "reservoir": {
+        "value": 2.5,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1770,
+        "unit": "W",
+        "text": "1770 W max at 220 V, 2100 W max at 240 V"
+      },
+      "weight": {
+        "value": 30,
+        "unit": "kg"
+      },
+      "size": "360 × 540 × 380 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Kaapi Machines, Linea Mini listing (price)",
+        "url": "https://kaapimachines.com/product/la-marzocco-linea-mini/"
+      },
+      {
+        "label": "La Marzocco UK, Linea Mini product page",
+        "url": "https://www.lamarzocco.com/uk/en/home-products/espresso-machines/linea-mini-r/"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "steamBoiler": 1,
+      "temperature": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "breville-oracle-jet",
+    "category": "machines",
+    "brand": "Breville",
+    "name": "Oracle Jet",
+    "price": {
+      "amount": 349990,
+      "currency": "INR",
+      "note": "Selling price; MRP ₹399,000"
+    },
+    "summary": "A ThermoJet machine that grinds, doses and tamps automatically into a 58 mm portafilter.",
+    "specs": {
+      "heating": "ThermoJet",
+      "brewBoiler": {
+        "placeholder": true,
+        "note": "ThermoJet: no boiler volume applies."
+      },
+      "steamBoiler": "None",
+      "pump": {
+        "placeholder": true,
+        "note": "The maker’s page does not list pump pressure."
+      },
+      "temperature": {
+        "placeholder": true,
+        "note": "The maker’s page does not list temperature control."
+      },
+      "portafilter": {
+        "value": 58,
+        "unit": "mm"
+      },
+      "reservoir": {
+        "value": 2.3,
+        "unit": "L"
+      },
+      "power": {
+        "value": 1600,
+        "unit": "W",
+        "text": "1400 to 1600 W at 220 to 240 V"
+      },
+      "weight": {
+        "value": 12.1,
+        "unit": "kg",
+        "text": "12.1 kg (the retailer says about 12.6 kg)"
+      },
+      "size": "422 × 360 × 378 mm (W × D × H)"
+    },
+    "sources": [
+      {
+        "label": "Caramelly, Oracle Jet listing (price)",
+        "url": "https://caramelly.in/products/sage-breville-the-oracle-jet-espresso-machinesage-breville-the-oracle-jet-espresso-machine"
+      },
+      {
+        "label": "Sage UK, BES985 product page",
+        "url": "https://www.sageappliances.com/en-gb/product/bes985"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "heating": 1,
+      "portafilter": 1,
+      "reservoir": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "blue-tokai-attikan-estate",
+    "category": "beans",
+    "brand": "Blue Tokai",
+    "name": "Attikan Estate",
+    "price": {
+      "amount": 700,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,300, 1 kg is ₹2,380"
+    },
+    "summary": "A washed single-estate arabica from the Biligiri Hills, roasted medium-dark and aimed at espresso.",
+    "specs": {
+      "style": "Single origin",
+      "origins": "Attikan Estate, Biligiri Hills, Karnataka (1200-1650 m)",
+      "process": "Washed",
+      "roast": "Medium-dark",
+      "notes": "Dark Chocolate, Figs, Roasted Almond",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": "Espresso: 18 g dose, 30-35 s, 88-95°C, home espresso grind"
+    },
+    "sources": [
+      {
+        "label": "Blue Tokai, product page",
+        "url": "https://bluetokaicoffee.com/products/attikan-estate"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "blue-tokai-vienna-roast",
+    "category": "beans",
+    "brand": "Blue Tokai",
+    "name": "Vienna Roast",
+    "price": {
+      "amount": 650,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,200, 1 kg is ₹2,210"
+    },
+    "summary": "A dark-roast Karnataka and Tamil Nadu blend that the roaster suggests for espresso with milk.",
+    "specs": {
+      "style": "Blend",
+      "origins": "Chikmagalur (Karnataka) and Shevaroys (Tamil Nadu), 800-1100 m",
+      "process": "Washed",
+      "roast": "Dark",
+      "notes": "Cocoa, Oaky, Bitter Sweet",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": "Espresso: 15 g dose, 30-35 s, 88-95°C, home espresso grind"
+    },
+    "sources": [
+      {
+        "label": "Blue Tokai, product page",
+        "url": "https://bluetokaicoffee.com/products/vienna-roast"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "blue-tokai-silver-oak-cafe-blend",
+    "category": "beans",
+    "brand": "Blue Tokai",
+    "name": "Silver Oak Café Blend",
+    "price": {
+      "amount": 750,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,395, 1 kg is ₹2,550"
+    },
+    "summary": "The house blend of the Blue Tokai cafés: a medium roast of washed and natural coffees for espresso and filter.",
+    "specs": {
+      "style": "Blend",
+      "origins": "Karnataka and Tamil Nadu, 900-1650 m",
+      "process": "Washed and natural",
+      "roast": "Medium",
+      "notes": "Hazelnut, Honey, Grapes",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": "Espresso: 15 g dose, 55 ml out, 28-35 s, 88-95°C"
+    },
+    "sources": [
+      {
+        "label": "Blue Tokai, product page",
+        "url": "https://bluetokaicoffee.com/products/silver-oak-cafe-blend"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "blue-tokai-dhak-blend",
+    "category": "beans",
+    "brand": "Blue Tokai",
+    "name": "Dhak Blend",
+    "price": {
+      "amount": 700,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,300, 1 kg is ₹2,380"
+    },
+    "summary": "A dark-roast blend of natural-process Chikmagalur coffees, recommended for espresso drinks and moka pot.",
+    "specs": {
+      "style": "Blend",
+      "origins": "Chikmagalur, Karnataka, 910-1150 m",
+      "process": "Natural",
+      "roast": "Dark",
+      "notes": "Dark Chocolate, Cocoa, Fruit Jam",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": "Home espresso: 15 g dose, 45 s, 88-95°C"
+    },
+    "sources": [
+      {
+        "label": "Blue Tokai, product page",
+        "url": "https://bluetokaicoffee.com/products/dhak-blend"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "blue-tokai-monsoon-malabar",
+    "category": "beans",
+    "brand": "Blue Tokai",
+    "name": "Monsoon Malabar AA, Hoysala Estate",
+    "price": {
+      "amount": 700,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,300, 1 kg is ₹2,380"
+    },
+    "summary": "A monsooned arabica from Hoysala Estate, roasted medium-dark, with a low-acid, nutty cup.",
+    "specs": {
+      "style": "Single origin",
+      "origins": "Hoysala Estate, Chikmagalur, Karnataka (900-1050 m)",
+      "process": "Monsooned",
+      "roast": "Medium-dark",
+      "notes": "Cocoa Nibs, Nutty, Raisins",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": "Espresso: 17.5 g dose, 15-18 s, 88-95°C, Ditting grind setting 3"
+    },
+    "sources": [
+      {
+        "label": "Blue Tokai, product page",
+        "url": "https://bluetokaicoffee.com/products/monsoon-malabar"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "black-baza-kaati",
+    "category": "beans",
+    "brand": "Black Baza",
+    "name": "Kaati",
+    "price": {
+      "amount": 640,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,260"
+    },
+    "summary": "A medium-dark washed arabica from smallholders in the Palani Hills, with a French press recipe.",
+    "specs": {
+      "style": "Single origin",
+      "origins": "Palani Hills, Tamil Nadu, 1200 m",
+      "process": "Washed",
+      "roast": "Medium dark",
+      "notes": "Burnt Caramel, Toasted Nuts, Cocoa",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g"
+      },
+      "recipe": "French press: 18 g coarse, 240 ml water at 92-94°C, 4 min steep"
+    },
+    "sources": [
+      {
+        "label": "Black Baza, product page",
+        "url": "https://blackbazacoffee.com/products/kaati"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "black-baza-jumping-ant",
+    "category": "beans",
+    "brand": "Black Baza",
+    "name": "Jumping Ant",
+    "price": {
+      "amount": 640,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,260"
+    },
+    "summary": "A light-roast washed Selection 9 from BR Hills, written up for pour over.",
+    "specs": {
+      "style": "Single origin",
+      "origins": "BR Hills, Karnataka, 1200 m",
+      "process": "Washed",
+      "roast": "Light",
+      "notes": "Sweet Citrus, Nutty, Honey",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g"
+      },
+      "recipe": "Pour over: 15 g medium grind, 250 ml hot water"
+    },
+    "sources": [
+      {
+        "label": "Black Baza, product page",
+        "url": "https://blackbazacoffee.com/products/jumping-ant"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0,
+      "recipe": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "araku-high-altitude",
+    "category": "beans",
+    "brand": "Araku",
+    "name": "High Altitude",
+    "price": {
+      "amount": 940,
+      "currency": "INR",
+      "note": "250 g pouch"
+    },
+    "summary": "A black honey arabica from Bakuru village, Araku Valley, roasted medium and suited to slow brewing.",
+    "specs": {
+      "style": "Single origin",
+      "origins": "Bakuru village, Araku Valley, 3,790 to 4,362 ft",
+      "process": "Black honey",
+      "roast": "Medium",
+      "notes": "Rose apple, Buttercream cookies, Baker’s chocolate, Caramel",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g"
+      },
+      "recipe": {
+        "placeholder": true,
+        "note": "The page names pour over or French press but gives no dose or yield."
+      }
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee, product page",
+        "url": "https://arakucoffee.in/products/high-altitude"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "process": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "corridor-seven-barista-forte",
+    "category": "beans",
+    "brand": "Corridor Seven",
+    "name": "Barista Forte Blend",
+    "price": {
+      "amount": 690,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,285, 1 kg is ₹2,350"
+    },
+    "summary": "A medium-roast espresso-profile blend of Indian arabicas, sold for home and professional machines.",
+    "specs": {
+      "style": "Blend",
+      "origins": "India (various parts), 1450-1524 m",
+      "process": {
+        "placeholder": true,
+        "note": "The page lists \"Blended\" as process and \"Washed\" under varietal, so it is unclear."
+      },
+      "roast": "Medium (espresso profile)",
+      "notes": "Cacao, Nutmeg, traces of Bayleaf",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": {
+        "placeholder": true,
+        "note": "No recipe on the product page."
+      }
+    },
+    "sources": [
+      {
+        "label": "Corridor Seven, product page",
+        "url": "https://corridorseven.coffee/products/barista-forte"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "corridor-seven-august-rush",
+    "category": "beans",
+    "brand": "Corridor Seven",
+    "name": "August Rush Blend",
+    "price": {
+      "amount": 750,
+      "currency": "INR",
+      "note": "250 g bag; 500 g is ₹1,395, 1 kg is ₹2,550"
+    },
+    "summary": "The roaster’s in-house blend of SLN 795 and SLN9, a medium espresso-profile roast.",
+    "specs": {
+      "style": "Blend",
+      "origins": "India (various parts), 1450-1524 m",
+      "process": {
+        "placeholder": true,
+        "note": "The page lists only \"Blended\" as process."
+      },
+      "roast": "Medium (espresso profile)",
+      "notes": "Prunes, Soft Finish and Toasted Almonds",
+      "bag": {
+        "value": 250,
+        "unit": "g",
+        "text": "250 g, also 500 g and 1 kg"
+      },
+      "recipe": {
+        "placeholder": true,
+        "note": "No recipe on the product page."
+      }
+    },
+    "sources": [
+      {
+        "label": "Corridor Seven, product page",
+        "url": "https://corridorseven.coffee/products/august-rush"
+      }
+    ],
+    "src": {
+      "price": 0,
+      "origins": 0,
+      "roast": 0,
+      "notes": 0,
+      "bag": 0
+    },
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "timemore-black-mirror-basic-2",
+    "category": "accessories",
+    "brand": "Timemore",
+    "name": "Black Mirror Basic 2",
+    "price": {
+      "amount": 5399,
+      "currency": "INR",
+      "note": "Listed as the regular price, MRP inclusive of taxes"
+    },
+    "summary": "A rechargeable brewing scale with a 2 kg limit and 0.1 g readability that fits on a drip tray.",
+    "specs": {
+      "kind": "Brewing scale",
+      "capacity": {
+        "value": 2,
+        "unit": "kg"
+      },
+      "precision": "0.1 g",
+      "power": "1600 mAh battery, USB-C",
+      "material": {
+        "placeholder": true,
+        "note": "Body material is not stated on either page read."
+      },
+      "weight": {
+        "value": 370,
+        "unit": "g"
+      },
+      "size": "152 or 153 × 130 × 26 mm (the two pages differ by 1 mm)"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 0,
+      "precision": 1,
+      "power": 0,
+      "weight": 1,
+      "size": 0
+    },
+    "sources": [
+      {
+        "label": "Bili Hu, product page (India)",
+        "url": "https://bilihu.in/products/timemore-weighing-scale-black-mirror-basic-2"
+      },
+      {
+        "label": "Eight Ounce Coffee, product listing",
+        "url": "https://eightouncecoffee.com/products/timemore-black-mirror-basic-2-coffee-scale"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "timemore-basic-3",
+    "category": "accessories",
+    "brand": "Timemore",
+    "name": "Basic 3.0",
+    "price": {
+      "amount": 5280,
+      "currency": "INR"
+    },
+    "summary": "A rechargeable espresso and pour-over scale with a built-in timer and a stated 24 hours of use.",
+    "specs": {
+      "kind": "Espresso and brewing scale",
+      "capacity": {
+        "value": 2,
+        "unit": "kg",
+        "text": "2 kg (load range 0.2 to 2000 g)"
+      },
+      "precision": "0.1 g up to 500 g, 1 g to 1000 g, 3 g to 2000 g",
+      "power": "1600 mAh battery, up to 24 h of use",
+      "material": {
+        "placeholder": true,
+        "note": "The maker page has a Materials field with no value."
+      },
+      "weight": {
+        "value": 300,
+        "unit": "g",
+        "text": "300 g (units may vary)"
+      },
+      "size": "140 × 120 × 20 mm"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "precision": 1,
+      "power": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/timemore-basic-3-0-electronic-espresso-scale"
+      },
+      {
+        "label": "Timemore, product page",
+        "url": "https://timemore.com/products/timemore-basic-3-0-electronic-espresso-scale-with-timer"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "fellow-stagg-ekg-pro",
+    "category": "accessories",
+    "brand": "Fellow",
+    "name": "Stagg EKG Pro",
+    "price": {
+      "amount": 30800,
+      "currency": "INR"
+    },
+    "summary": "A 0.9 L gooseneck electric kettle with variable temperature control for pour-over.",
+    "specs": {
+      "kind": "Electric gooseneck kettle",
+      "capacity": {
+        "value": 0.9,
+        "unit": "L",
+        "text": "0.9 L (30 oz)"
+      },
+      "precision": "Set to the degree, 40 to 100 °C",
+      "power": "1000 to 1200 W at 110 to 120 V (Fellow’s US spec; the Indian unit’s rating is not stated)",
+      "material": "304 18/8 stainless steel, BPA-free plastic handle and lid pull",
+      "weight": {
+        "value": 1400,
+        "unit": "g",
+        "text": "1,400 g including the kettle base (Fellow’s page covers the Pro and Pro Studio)"
+      },
+      "size": "282 × 172 × 196 mm"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "precision": 1,
+      "power": 1,
+      "material": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/fellow-stagg-ekg-pro-electric-kettle-0-9l"
+      },
+      {
+        "label": "Fellow, product page",
+        "url": "https://fellowproducts.com/products/stagg-ekg-electric-pour-over-kettle"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "hario-buono-v60-kettle",
+    "category": "accessories",
+    "brand": "Hario",
+    "name": "V60 Buono Kettle 1.2 L",
+    "price": {
+      "amount": 4450,
+      "currency": "INR"
+    },
+    "summary": "A stovetop stainless steel gooseneck kettle with a slim spout for controlled pouring.",
+    "specs": {
+      "kind": "Stovetop gooseneck kettle",
+      "capacity": {
+        "value": 1.2,
+        "unit": "L",
+        "text": "1.2 L full, 800 ml practical"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Stainless steel body and lid, phenol resin handle and knob",
+      "weight": {
+        "placeholder": true,
+        "note": "No page read gives the weight."
+      },
+      "size": "274 × 144 × 147 mm"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "material": 2,
+      "size": 2
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/hario-buono-v60-kettle-1-2l"
+      },
+      {
+        "label": "Hario UK, product page",
+        "url": "https://www.hario.co.uk/v60-pouring-kettle-buono-large.html"
+      },
+      {
+        "label": "Hario USA, product page",
+        "url": "https://www.hario-usa.com/collections/kettles/products/v60-buono-drip-kettle"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "hario-v60-02-ceramic",
+    "category": "accessories",
+    "brand": "Hario",
+    "name": "V60 02 Ceramic Dripper Set",
+    "price": {
+      "amount": 4480,
+      "currency": "INR",
+      "note": "Set price: dripper, glass server, paper filters and a measuring scoop"
+    },
+    "summary": "The cone dripper with spiral ribs and one large hole, sold in India as a set with a glass server.",
+    "specs": {
+      "kind": "Pour-over dripper set",
+      "capacity": {
+        "value": 4,
+        "unit": "cups",
+        "text": "1 to 4 cups (the dripper, per Hario USA)"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Ceramic dripper, heat-resistant glass server",
+      "weight": {
+        "placeholder": true,
+        "note": "No page read gives the weight."
+      },
+      "size": "Dripper only: 140 × 120 × 102 mm"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "material": 0,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/hario-v60-02-ceramic-coffee-dripper-set-white"
+      },
+      {
+        "label": "Hario USA, product page",
+        "url": "https://www.hario-usa.com/products/v60-coffee-dripper-02-ceramic"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "hario-v60-switch-02",
+    "category": "accessories",
+    "brand": "Hario",
+    "name": "V60 Switch 02",
+    "price": {
+      "amount": 3940,
+      "currency": "INR",
+      "note": "Selling price; the page also shows ₹4,300"
+    },
+    "summary": "A glass V60 dripper with a switch that lets it brew as an immersion steep or a standard pour-over.",
+    "specs": {
+      "kind": "Immersion dripper",
+      "capacity": {
+        "value": 200,
+        "unit": "ml",
+        "text": "200 ml finished capacity"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Borosilicate glass bowl, silicone base, resin switch, stainless steel ball",
+      "weight": {
+        "placeholder": true,
+        "note": "No page read gives the weight."
+      },
+      "size": "118 × 115 × 133 mm"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 0,
+      "material": 1,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/hario-v60-immersion-dripper-switch-size-02"
+      },
+      {
+        "label": "Hario USA, product page",
+        "url": "https://www.hario-usa.com/products/switch-immersion-dripper"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "aeropress-original",
+    "category": "accessories",
+    "brand": "AeroPress",
+    "name": "Original",
+    "price": {
+      "amount": 4000,
+      "currency": "INR",
+      "note": "Listed as “AeroPress Coffee Maker”, which is the maker’s name for the Original"
+    },
+    "summary": "A plastic press that brews by immersion and pushes the coffee through a paper filter.",
+    "specs": {
+      "kind": "Immersion press",
+      "capacity": {
+        "value": 10,
+        "unit": "oz",
+        "text": "10 oz (about 296 ml), 1 to 2 cups"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Polypropylene",
+      "weight": {
+        "value": 220,
+        "unit": "g",
+        "text": "220 g (7.75 oz) with scoop and stirrer"
+      },
+      "size": "5.25 in tall × 4.2 in wide (133 × 107 mm)"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "material": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/aeropress-coffee-maker"
+      },
+      {
+        "label": "AeroPress, product page",
+        "url": "https://aeropress.com/products/aeropress-coffee-maker"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "aeropress-go",
+    "category": "accessories",
+    "brand": "AeroPress",
+    "name": "Go",
+    "price": {
+      "amount": 4880,
+      "currency": "INR"
+    },
+    "summary": "A compact AeroPress that packs into its own travel mug.",
+    "specs": {
+      "kind": "Immersion press",
+      "capacity": {
+        "value": 8,
+        "unit": "oz",
+        "text": "8 oz (about 237 ml), 1 cup"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Polypropylene, silicone mug lid",
+      "weight": {
+        "value": 323,
+        "unit": "g",
+        "text": "323 g packed in the mug with accessories and 20 filters"
+      },
+      "size": "4.5 in tall × 3.6 in wide (114 × 91 mm)"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "material": 1,
+      "weight": 1,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/aeropress-go-travel-coffee-maker"
+      },
+      {
+        "label": "AeroPress, product page",
+        "url": "https://aeropress.com/products/aeropress-go-travel-coffee-press"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "chemex-classic-six-cup",
+    "category": "accessories",
+    "brand": "Chemex",
+    "name": "Classic Six Cup",
+    "price": {
+      "amount": 4950,
+      "currency": "INR",
+      "note": "Six-cup option; the three-cup option is ₹4,450"
+    },
+    "summary": "An hourglass borosilicate glass pour-over brewer with a wood collar and leather tie.",
+    "specs": {
+      "kind": "Pour-over brewer",
+      "capacity": {
+        "value": 30,
+        "unit": "oz",
+        "text": "30 oz (about 887 ml), Chemex counts a cup as 5 oz"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Borosilicate glass, wood collar with leather tie",
+      "weight": {
+        "placeholder": true,
+        "note": "No page read gives the weight."
+      },
+      "size": "8.5 in tall × 5.125 in across (216 × 130 mm)"
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 1,
+      "material": 1,
+      "size": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page (6 cup option)",
+        "url": "https://www.arakucoffee.in/products/chemex-6-cup-wooden-collar?variant=45344117981504"
+      },
+      {
+        "label": "Chemex, product page",
+        "url": "https://www.chemexcoffeemaker.com/products/six-cup-classic-chemex"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "bialetti-moka-express-3",
+    "category": "accessories",
+    "brand": "Bialetti",
+    "name": "Moka Express 3 Cup",
+    "price": {
+      "amount": 2499,
+      "currency": "INR",
+      "note": "Three-cup option"
+    },
+    "summary": "An aluminium stovetop moka pot that makes about 130 ml; the retailer says it is not for induction.",
+    "specs": {
+      "kind": "Stovetop moka pot",
+      "capacity": {
+        "value": 130,
+        "unit": "ml",
+        "text": "130 ml (3 cups)"
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Aluminium",
+      "weight": {
+        "placeholder": true,
+        "note": "Pages read gave no weight, or disagreed."
+      },
+      "size": {
+        "placeholder": true,
+        "note": "Pages read gave no dimensions, or disagreed."
+      }
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "capacity": 0,
+      "material": 0
+    },
+    "sources": [
+      {
+        "label": "Sarāca Coffee Roasters, product page (India)",
+        "url": "https://saracacoffee.in/products/bialetti-moka-express"
+      },
+      {
+        "label": "Blaser Café, product listing",
+        "url": "https://www.blasercafe.ch/en/bialetti/bialetti-moka-express-black-3-cups"
+      }
+    ],
+    "checked": "2026-10-23"
+  },
+  {
+    "id": "origami-dripper",
+    "category": "accessories",
+    "brand": "Origami",
+    "name": "Dripper",
+    "price": {
+      "amount": 3550,
+      "currency": "INR"
+    },
+    "summary": "A porcelain dripper with 20 vertical ribs that takes both V60 cone and Kalita Wave filters.",
+    "specs": {
+      "kind": "Pour-over dripper",
+      "capacity": {
+        "placeholder": true,
+        "note": "No page read states a capacity or cup range."
+      },
+      "precision": "n/a",
+      "power": "None",
+      "material": "Porcelain",
+      "weight": {
+        "placeholder": true,
+        "note": "No page read gives the weight."
+      },
+      "size": {
+        "placeholder": true,
+        "note": "No page read gives the dimensions."
+      }
+    },
+    "src": {
+      "price": 0,
+      "kind": 0,
+      "material": 1
+    },
+    "sources": [
+      {
+        "label": "Araku Coffee India, product page",
+        "url": "https://www.arakucoffee.in/products/origami-dripper-1"
+      },
+      {
+        "label": "Subko Coffee Roasters, product page (India)",
+        "url": "https://www.subko.coffee/products/origami-pan-india"
+      }
+    ],
+    "checked": "2026-10-23"
+  }
+]
