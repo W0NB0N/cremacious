@@ -3,7 +3,7 @@
 //
 // The liquid is a stack of fixed blend layers over the page (DESIGN.md, "Legibility at the liquid line"):
 //   invert  difference, white          → every pixel becomes 255 - x
-//   lift    plus-lighter, rgb(47 16 1) → together: S - x, the exact palette inverse
+//   lift    plus-lighter, palette lift → together: S - x, the exact palette inverse
 //   crema   multiply, the crema band   → brown text stays dark on the tan foam
 // So a glyph that crosses the surface is crème below the line and espresso above it.
 // For speed, only a thin strip around the surface is a canvas (.shot); the deep coffee under
@@ -11,12 +11,14 @@
 // narrow canvases (.stream). The strip and the pool meet at one integer pixel row.
 //
 // Idle: ripples on the ticker clock, a meniscus at the walls, crema bubbles drifting, and the
-// pointer (or scroll velocity on touch) disturbing the surface. Reduced motion: no canvases,
+// pointer (or scroll velocity on touch) disturbing the surface. Reduced motion or forced colours: no canvases,
 // no cup; the theme steps to dark when the catalogue reaches the middle of the screen.
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { isTouch, onPage, prefersReducedMotion, scrollState } from '@/engine';
+import { forcedColors, isTouch, onPage, prefersReducedMotion, scrollLimit, scrollState } from '@/engine';
 import { shot } from '@/data/site';
+import { foam as foamColor, lift as liftColor, sheen as sheenColor } from '@/app/palette';
+import { anchoredProgress } from './progress';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +50,8 @@ const st = {
   level: -1, tilt: 0, lastVel: 0, hp: 1, heroEnd: 0, lastMove: 0,
   pour: 0, lipX: -1, lipY: -1, angle: 0,
   pinned: null as number | null,
+  heroEndY: 0, // px scroll where the hero lets go of the cup
+  p: 0,
   pinBelow: null as HTMLElement | null, // a page can settle the surface just under one element
   fixed: null as [number, number] | null,
 };
@@ -78,6 +82,7 @@ function pulled(p: number) {
   if (p <= he) return HERO_SHARE * smooth(0, 1, p / he);
   return HERO_SHARE + (1 - HERO_SHARE) * clamp01((p - he) / (0.96 - he));
 }
+const scroll = anchoredProgress();
 const levelFor = (p: number) => { const b = base(); return b + (H + 70 - b) * pulled(p); };
 
 function resize() {
@@ -269,35 +274,35 @@ function draw() {
   inv.fill(body);
   const sheenTop = bottom - 4;
   const sheen = lift.createLinearGradient(0, sheenTop, 0, sheenTop + 48);
-  sheen.addColorStop(0, 'rgb(64 30 12)'); // a little light just under the crema
-  sheen.addColorStop(1, 'rgb(47 16 1)');
+  sheen.addColorStop(0, sheenColor); // a little light just under the crema
+  sheen.addColorStop(1, liftColor);
   lift.fillStyle = sheen;
   lift.fill(body);
-  lift.fillStyle = 'rgb(47 16 1)';
+  lift.fillStyle = liftColor;
   for (const d of drops) {
     const p = new Path2D(); p.arc(d.x, d.y, d.r, 0, Math.PI * 2);
     inv.fill(p); lift.fill(p);
   }
 
   // 3: the crema band, multiplied over whatever is under it
-  crema.fillStyle = '#d6a66b';
+  crema.fillStyle = foamColor.mid;
   crema.fill(band);
   crema.save();
   crema.clip(band);
   const edge = new Path2D();
   edge.moveTo(-2, ys[0] + 2);
   trace(edge, (i) => ys[i] + 2);
-  crema.lineWidth = 3.5; crema.strokeStyle = '#ecd6b1'; crema.stroke(edge); // pale top of the foam
+  crema.lineWidth = 3.5; crema.strokeStyle = foamColor.top; crema.stroke(edge); // pale top of the foam
   const under = new Path2D();
   under.moveTo(-2, ys[0] + foam[0]);
   trace(under, (i) => ys[i] + foam[i]);
-  crema.lineWidth = 4; crema.strokeStyle = '#b77a3f'; crema.stroke(under); // darker where it meets the coffee
+  crema.lineWidth = 4; crema.strokeStyle = foamColor.base; crema.stroke(under); // darker where it meets the coffee
   for (const b of bubbles) {
     const x = b.x * W, i = Math.round(b.x * N);
     const y = ys[i] + foam[i] * b.d;
     crema.beginPath();
     crema.arc(x, y, b.dark ? b.r * 0.55 : b.r, 0, Math.PI * 2);
-    crema.fillStyle = b.dark ? 'rgb(150 96 48 / 0.7)' : '#f2e0c0';
+    crema.fillStyle = b.dark ? foamColor.bubbleDark : foamColor.bubble;
     crema.fill();
   }
   crema.restore();
@@ -307,7 +312,7 @@ function draw() {
   glint.moveTo(-2, ys[0]);
   trace(glint, (i) => ys[i]);
   lift.lineWidth = 1.2;
-  lift.strokeStyle = 'rgb(255 236 210 / 0.22)';
+  lift.strokeStyle = foamColor.glint;
   lift.stroke(glint);
 }
 
@@ -323,7 +328,7 @@ function drawStream() {
   if (x0 !== streamX) { place(streams, x0, 0); streamX = x0; }
   [sInv, sLift].forEach((x) => { x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, SW * dpr, H * dpr); x.setTransform(dpr, 0, 0, dpr, -x0 * dpr, 0); });
   sInv.fillStyle = '#fff'; sInv.fill(path);
-  sLift.fillStyle = 'rgb(47 16 1)'; sLift.fill(path);
+  sLift.fillStyle = liftColor; sLift.fill(path);
 }
 
 /** First matching element that is actually rendered (routers may keep old pages hidden). */
@@ -356,7 +361,8 @@ function rest(p: number, time: number) {
 function tick(time: number) {
   if (!W || document.hidden) return;
   const r = Math.min(4, gsap.ticker.deltaRatio(60));
-  const p = st.pinned ?? scrollState().progress;
+  if (st.pinned === null) { st.p = scroll.at(scrollState().y, scrollLimit()); st.heroEnd = st.heroEndY ? scroll.map(st.heroEndY) : 0; }
+  const p = st.pinned ?? st.p;
   const target = st.pinBelow ? H - (st.pinBelow.getBoundingClientRect().bottom + 22) : levelFor(p);
   st.level = st.level < 0 ? target : st.level + (target - st.level) * (1 - Math.pow(0.9, r));
   pointer.lean += ((pointer.x >= 0 ? pointer.x / W - 0.5 : 0) - pointer.lean) * (1 - Math.pow(0.95, r));
@@ -384,11 +390,16 @@ function reducedPath() {
 
 /** Call once from setupMotion. */
 export function startShot() {
-  if (prefersReducedMotion()) return reducedPath();
+  // Forced colours repaint the pool divs but not the canvases, so the blend falls apart: no liquid.
+  if (prefersReducedMotion() || forcedColors()) return reducedPath();
   strips = [...document.querySelectorAll<HTMLCanvasElement>('canvas.shot')];
   streams = [...document.querySelectorAll<HTMLCanvasElement>('canvas.stream')];
   pools = [...document.querySelectorAll<HTMLElement>('.pool')];
-  if (strips.length !== 3 || streams.length !== 2) return;
+  if (strips.length !== 3 || streams.length !== 2) {
+    // layout.tsx renders 3 canvas.shot and 2 canvas.stream; anything else means the markup drifted.
+    console.warn(`startShot: expected 3 canvas.shot and 2 canvas.stream, found ${strips.length} and ${streams.length}. The liquid is off.`);
+    return;
+  }
   [inv, lift, crema] = strips.map((c) => c.getContext('2d')!);
   [sInv, sLift] = streams.map((c) => c.getContext('2d')!);
   document.documentElement.classList.add('shot-live');
@@ -428,11 +439,12 @@ export function startShot() {
     cupHandle = document.querySelector('[data-cup-handle]');
     st.hp = cupBody ? 0 : 1;
     const hero = document.querySelector('[data-hero]');
-    st.heroEnd = 0;
+    st.heroEnd = st.heroEndY = 0;
+    scroll.reset();
     if (hero) ScrollTrigger.create({
       trigger: hero, start: 'top top', end: 'bottom bottom',
       onUpdate: (s) => { st.hp = s.progress; },
-      onRefresh: (s) => { const max = ScrollTrigger.maxScroll(window); st.heroEnd = max > 0 ? s.end / max : 0; },
+      onRefresh: (s) => { st.heroEndY = s.end; },
     });
     return () => { st.pinBelow = null; cupStage = cupBody = cupShadow = null; cupHandle = null; cupLiquid = null; cupFill = cupCrema = null; st.pour = 0; drops.length = 0; };
   });

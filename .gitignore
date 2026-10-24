@@ -60,3 +60,10 @@ CLAUDE.md
 DESIGN.md
 AGENTS.md
 skills-lock.json
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
+# backend runtime state (snapshot + price history)
+/backend/.data/

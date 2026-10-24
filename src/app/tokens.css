@@ -1,19 +1,18 @@
 /* Design tokens. Light palette by default; the dark palette is its exact inverse
    (S - x with S = ground + ink = rgb(302 271 256)), which is what the liquid's blend
-   layers produce. html.is-dark (reduced motion path) uses the same values. */
+   layers produce. html.is-dark (reduced motion path) uses the same values.
+   --creme, --espresso, --lift and --foam-* come from src/app/palette.ts (set on <html>). */
 
 :root {
-  --c-bg: #f2e8de;
-  --c-fg: #3c2722;
+  --c-bg: var(--creme);
+  --c-fg: var(--espresso);
   --c-muted: #715a4e;
-  --c-line: rgb(60 39 34 / 0.16);
+  --c-line: color-mix(in srgb, var(--espresso) 16%, transparent);
   --c-well: #e8dacb;
   --c-accent: var(--c-fg);
-  --c-curtain: #3c2722;
+  --c-curtain: var(--espresso);
 
   /* Fixed colors: the liquid and the cup never swap */
-  --espresso: #3c2722;
-  --creme: #f2e8de;
   --crema: #c98a3e;
   --crema-light: #d9b07c;
   --crema-pale: #ead2ac;
@@ -39,7 +38,6 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-ui: cubic-bezier(0.215, 0.61, 0.355, 1);
 
-  --z-gl: 0;
   --z-content: 1;
   --z-header: 50;
   --z-pointer: 55; /* above the page, under the liquid: the liquid inverts it */
@@ -50,9 +48,9 @@
 }
 
 html.is-dark {
-  --c-bg: #3c2722;
-  --c-fg: #f2e8de;
+  --c-bg: var(--espresso);
+  --c-fg: var(--creme);
   --c-muted: #bdb5b2;
-  --c-line: rgb(242 232 222 / 0.16);
+  --c-line: color-mix(in srgb, var(--creme) 16%, transparent);
   --c-well: #463535;
 }

@@ -56,8 +56,9 @@ export function setupMotion() {
   // The header steps aside while reading down and returns on the way up.
   let last = 0;
   onScroll(({ y }) => {
-    if (Math.abs(y - last) < 6) return;
-    document.documentElement.classList.toggle('frame-away', y > 200 && y > last);
+    if (y === last) return;
+    const scrollingUp = y < last;
+    document.documentElement.classList.toggle('frame-away', !scrollingUp && y > 200);
     document.documentElement.classList.toggle('frame-solid', y > 120);
     last = y;
   });

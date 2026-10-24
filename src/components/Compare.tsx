@@ -7,6 +7,7 @@ function Value({ c, max }: { c: Cell; max?: number }) {
   return (
     <>
       <span className={c.note && c.text === 'Unconfirmed' ? 'val val--unconfirmed' : 'val'}>{c.text}</span>
+      {c.source ? <a className="val__src" href={c.source.url} target="_blank" rel="noopener noreferrer" aria-label={`Source: ${c.source.label}`}>↗</a> : null}
       {max && c.value !== undefined ? (
         <span className="bar" aria-hidden="true"><span className="bar__fill" style={{ scale: `${c.value / max} 1` }} /></span>
       ) : null}

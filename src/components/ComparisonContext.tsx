@@ -14,13 +14,13 @@ type Api = State & {
 
 const Ctx = createContext<Api | null>(null);
 
-const initial: State = {
+export const initial: State = {
   category: 'grinders',
   picks: {
-    grinders: ['niche-zero', 'fellow-ode-gen-2', 'eureka-mignon-specialita'],
-    machines: ['gaggia-classic-pro-e24', 'rancilio-silvia-pro-x', 'la-marzocco-linea-micra'],
-    beans: ['intelligentsia-black-cat-classic', 'onyx-monarch'],
-    accessories: ['acaia-lunar', 'timemore-black-mirror-basic-2'],
+    grinders: ['timemore-sculptor-078s', 'fellow-ode-gen-2', 'eureka-mignon-specialita'],
+    machines: ['gaggia-classic-pro-e24', 'rancilio-silvia-v6', 'la-marzocco-linea-mini'],
+    beans: ['blue-tokai-vienna-roast', 'black-baza-kaati'],
+    accessories: ['timemore-black-mirror-basic-2', 'timemore-basic-3'],
   },
 };
 

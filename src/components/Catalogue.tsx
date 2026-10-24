@@ -65,6 +65,7 @@ export function Catalogue() {
                         <dt>{r.label}</dt>
                         <dd>
                           <span className={c.note && c.text === 'Unconfirmed' ? 'val val--unconfirmed' : 'val'}>{c.text}</span>
+                          {c.source ? <a className="val__src" href={c.source.url} target="_blank" rel="noopener noreferrer" aria-label={`Source: ${c.source.label}`}>↗</a> : null}
                           {c.note ? <span className="val__note">{c.note}</span> : null}
                         </dd>
                       </div>
@@ -74,6 +75,7 @@ export function Catalogue() {
                     <dt>Price as listed</dt>
                     <dd>
                       <span className="val">{price.text}</span>
+                      {price.source ? <a className="val__src" href={price.source.url} target="_blank" rel="noopener noreferrer" aria-label={`Source: ${price.source.label}`}>↗</a> : null}
                       {price.note ? <span className="val__note">{price.note}</span> : null}
                     </dd>
                   </div>

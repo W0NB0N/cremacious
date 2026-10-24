@@ -26,7 +26,7 @@ section[tabindex='-1']:focus { outline: none; }
 
 /* ---------- Header ---------- */
 .header {
-  position: absolute; inset: 0 0 auto 0; z-index: var(--z-header);
+  position: sticky; top: 0; z-index: var(--z-header);
   display: flex; justify-content: space-between; align-items: baseline;
   padding: 1.1rem var(--gutter) 0.95rem;
   font-size: var(--t-s); font-weight: 600; letter-spacing: -0.005em;
@@ -34,6 +34,7 @@ section[tabindex='-1']:focus { outline: none; }
   border-bottom: 1px solid var(--c-line);
   transition: translate 0.6s var(--ease-out), background-color 0.4s;
 }
+html.frame-away .header { translate: 0 -100%; }
 .header a { pointer-events: auto; padding-block: 0; display: inline-block; }
 .header__brand { font-family: var(--f-display); letter-spacing: -0.03em; font-variation-settings: 'opsz' 24; font-size: clamp(1.55rem, 1.1rem + 1.15vw, 2rem); font-weight: 800; line-height: 1; }
 .header__nav {
@@ -205,7 +206,7 @@ html.frame-solid .header { background: var(--c-bg); }
 .cup__rim { stroke: var(--espresso); stroke-width: 4; stroke-linecap: round; }
 .cup__shadow {
   position: absolute; left: 30%; right: 18%; bottom: -3%; height: 8%;
-  background: radial-gradient(closest-side, rgb(60 39 34 / 0.28), transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--espresso) 28%, transparent), transparent);
 }
 
 /* ---------- Sourcing ---------- */
@@ -290,9 +291,11 @@ html.frame-solid .header { background: var(--c-bg); }
 .table-hint { display: none; }
 .cards { display: none; }
 .table td { font-size: var(--t-body); line-height: 1.4; }
-.val { display: block; }
+.val { display: inline; }
 .val--unconfirmed { color: var(--c-muted); font-style: italic; }
 .val__note { display: block; margin-top: 0.3rem; color: var(--c-muted); font-size: var(--t-xs); line-height: 1.4; max-width: 30ch; }
+.val__src { display: inline-block; margin-left: 0.15em; padding: 0.1em 0.25em; color: var(--c-muted); font-size: var(--t-xs); text-decoration: none; }
+.val__src:hover, .val__src:focus-visible { color: var(--c-fg); }
 .bar { display: block; height: 3px; margin-top: 0.55rem; background: var(--c-line); max-width: 14rem; }
 .bar__fill { display: block; height: 100%; background: var(--c-fg); transform-origin: left; transition: scale 0.9s var(--ease-out); }
 .table__sources ul { list-style: none; padding: 0; display: grid; gap: 0.4rem; font-size: var(--t-s); }
@@ -376,15 +379,20 @@ html.frame-solid .header { background: var(--c-bg); }
 }
 .lost__text { max-width: 40ch; margin-top: 1.4rem; font-size: var(--t-m); line-height: 1.4; } /* room for the crema between heading and text */
 
-/* ---------- Pointer: a coffee bean that follows the native cursor ---------- */
+/* ---------- Pointer: a fast dot trail that becomes a coffee bean over controls ---------- */
 .pointer { position: fixed !important; inset: 0 auto auto 0; z-index: var(--z-pointer); pointer-events: none; display: none; transform: none; }
 html.has-pointer .pointer { display: block; }
-.pointer__bean-wrap { position: absolute; left: 0; top: 0; }
+.pointer__dot-wrap, .pointer__bean-wrap { position: absolute; left: 0; top: 0; }
+.pointer__dot { display: block; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--espresso); box-shadow: 0 0 0 1.5px var(--creme); }
 .pointer__bean { display: block; width: 30px; height: 55px; max-width: none; margin: -27.5px 0 0 -21px; overflow: visible; } /* max-width: the wrapper is 0 wide */
 .pointer__bean ellipse { fill: var(--espresso); stroke: var(--creme); stroke-width: 2; } /* the rim keeps it visible on espresso fills */
 .pointer__bean path { fill: none; stroke: var(--creme); stroke-width: 2.6; stroke-linecap: round; }
 
 /* ---------- The shot: liquid layers and readout ---------- */
+/* Forced colours: the system owns the palette, and the blend layers would only invert it. */
+@media (forced-colors: active) {
+  .pool, .pool-crema, .shot, .stream, .readout, .pointer { display: none !important; }
+}
 .pool, .pool-crema, .shot, .stream {
   position: fixed; left: 0; top: 0; z-index: var(--z-shot);
   pointer-events: none; display: none; will-change: transform;
@@ -392,11 +400,11 @@ html.has-pointer .pointer { display: block; }
 html.motion .pool, html.motion .shot, html.motion .stream, html.motion:not(.shot-live) .pool-crema { display: block; }
 .pool { width: 100%; height: 100lvh; transform: translate3d(0, calc(100svh - clamp(72px, 11svh, 120px)), 0); }
 .pool--invert { background: #fff; mix-blend-mode: difference; }
-.pool--lift { background: rgb(47 16 1); mix-blend-mode: plus-lighter; }
+.pool--lift { background: var(--lift); mix-blend-mode: plus-lighter; }
 .pool-crema {
   width: 100%; height: 12px; mix-blend-mode: multiply;
   transform: translate3d(0, calc(100svh - clamp(72px, 11svh, 120px) - 12px), 0);
-  background: linear-gradient(#ecd6b1, #d6a66b 55%, #b77a3f);
+  background: linear-gradient(var(--foam-top), var(--foam-mid) 55%, var(--foam-base));
 }
 .shot { width: 100%; height: 300px; transform: translate3d(0, 100lvh, 0); }
 .stream { width: 200px; height: 100lvh; visibility: hidden; }
