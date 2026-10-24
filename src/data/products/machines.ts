@@ -108,7 +108,7 @@ export const machines: Machine[] = [
       { label: 'Something’s Brewing, Anna PID listing', url: 'https://somethingsbrewing.in/products/lelit-anna-with-pid-silver-coffee-machine-espresso-machine' },
       { label: 'Lelit, Anna PL41TEM product page', url: 'https://www.lelit.com/product/anna-pl41tem/' },
     ],
-    src: { price: 0, heating: 0, brewBoiler: 1, pump: 0, temperature: 1, portafilter: 0, reservoir: 1, weight: 1, size: 1 },
+    src: { price: 0, heating: 1, brewBoiler: 1, pump: 0, temperature: 1, portafilter: 0, reservoir: 1, weight: 1, size: 1 },
     checked,
   },
   {
@@ -124,7 +124,7 @@ export const machines: Machine[] = [
       steamBoiler: 'None',
       pump: 'Vibration pump',
       temperature: 'Thermostat, manual',
-      portafilter: { value: 58, unit: 'mm' },
+      portafilter: placeholder('Neither page states the portafilter diameter.'),
       reservoir: { value: 2, unit: 'L' },
       power: { value: 1150, unit: 'W', text: '1150 W at 230 V' },
       weight: { value: 14, unit: 'kg' },
@@ -134,7 +134,7 @@ export const machines: Machine[] = [
       { label: 'Something’s Brewing, Silvia V6 listing', url: 'https://somethingsbrewing.in/products/rancilio-silvia-v6-coffee-machine' },
       { label: 'Rancilio Group, Silvia product page', url: 'https://www.ranciliogroup.com/rancilio/silvia/silvia/' },
     ],
-    src: { price: 0, heating: 0, brewBoiler: 1, pump: 1, temperature: 1, portafilter: 0, reservoir: 1, power: 1, weight: 1, size: 1 },
+    src: { price: 0, heating: 0, brewBoiler: 1, pump: 1, temperature: 1, reservoir: 1, power: 1, weight: 1, size: 1 },
     checked,
   },
   {
@@ -142,7 +142,7 @@ export const machines: Machine[] = [
     category: 'machines',
     brand: 'De’Longhi',
     name: 'La Specialista Touch EC9455.M',
-    price: { amount: 65892, currency: 'INR', note: 'Selling price; MRP ₹129,990. Another Indian retailer lists ₹71,999' },
+    price: { amount: 65892, currency: 'INR', note: 'Selling price; MRP ₹129,990' },
     summary: 'A thermoblock machine with a built-in grinder, a touchscreen and an automatic steam wand.',
     specs: {
       heating: 'Thermoblock',
@@ -204,7 +204,7 @@ export const machines: Machine[] = [
       temperature: 'Dual-probe PID with thermosyphon circulation',
       portafilter: { value: 58, unit: 'mm' },
       reservoir: { value: 2.5, unit: 'L' },
-      power: { value: 1400, unit: 'W' },
+      power: placeholder('Neither page lists wattage; the maker gives voltages only.'),
       weight: { value: 18.3, unit: 'kg', text: '18.3 kg (the retailer says 18.5 kg)' },
       size: '255 × 535 × 385 mm (W × D × H)',
     },
@@ -212,7 +212,7 @@ export const machines: Machine[] = [
       { label: 'Something’s Brewing, Mara X V3 listing', url: 'https://somethingsbrewing.in/products/marax3-hx-coffee-machine-bss-220-240-50-type-q' },
       { label: 'Lelit, MaraX3 PL62X3 product page', url: 'https://www.lelit.com/product/marax3-pl62x3/' },
     ],
-    src: { price: 0, heating: 1, brewBoiler: 1, pump: 0, temperature: 1, portafilter: 0, reservoir: 1, power: 0, weight: 1, size: 1 },
+    src: { price: 0, heating: 1, brewBoiler: 1, pump: 0, temperature: 1, portafilter: 0, reservoir: 1, weight: 1, size: 1 },
     checked,
   },
   {

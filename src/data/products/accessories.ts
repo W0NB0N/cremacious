@@ -64,10 +64,10 @@ export const accessories: Accessory[] = [
       precision: 'Set to the degree, 40 to 100 °C',
       power: '1000 to 1200 W at 110 to 120 V (Fellow’s US spec; the Indian unit’s rating is not stated)',
       material: '304 18/8 stainless steel, BPA-free plastic handle and lid pull',
-      weight: placeholder('Neither cited page states the kettle weight; Fellow lists the standard EKG, not the Pro.'),
+      weight: { value: 1400, unit: 'g', text: '1,400 g including the kettle base (Fellow’s page covers the Pro and Pro Studio)' },
       size: '282 × 172 × 196 mm',
     },
-    src: { price: 0, kind: 0, capacity: 1, precision: 1, power: 1, material: 1, size: 1 },
+    src: { price: 0, kind: 0, capacity: 1, precision: 1, power: 1, material: 1, weight: 1, size: 1 },
     sources: [
       { label: 'Araku Coffee India, product page', url: 'https://www.arakucoffee.in/products/fellow-stagg-ekg-pro-electric-kettle-0-9l' },
       { label: 'Fellow, product page', url: 'https://fellowproducts.com/products/stagg-ekg-electric-pour-over-kettle' },

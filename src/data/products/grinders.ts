@@ -15,7 +15,7 @@ export const grinders: Grinder[] = [
       drive: 'Hand',
       burrs: 'Conical, stainless steel',
       burrSize: { value: 38, unit: 'mm' },
-      adjustment: 'Internal dial, 12 clicks per rotation (Classic dial)',
+      adjustment: 'Dial: 12 clicks per rotation (Classic) or 30 (Espresso); the page does not say which ships',
       capacity: { value: 20, unit: 'g' },
       speed: placeholder('Hand powered; no grind rate is published.'),
       power: 'None',
@@ -27,7 +27,7 @@ export const grinders: Grinder[] = [
       { label: 'Brewing Gadgets, product page', url: 'https://brewinggadgets.in/products/timemore-chestnut-c3s-coffee-grinder-black' },
       { label: 'Timemore, C3 series page', url: 'https://www.timemore.com/products/c3-series' },
     ],
-    src: { price: 0, burrs: 1, burrSize: 1, adjustment: 1, capacity: 1, size: 0, use: 1 },
+    src: { price: 0, burrs: 1, burrSize: 1, adjustment: 1, capacity: 0, size: 0, use: 1 },
     checked,
   },
   {
@@ -113,7 +113,7 @@ export const grinders: Grinder[] = [
     category: 'grinders',
     brand: 'Comandante',
     name: 'C40 MK4',
-    price: { amount: 33925, currency: 'INR', note: 'Brewing Gadgets, Natural Wood finish; other finishes are priced differently' },
+    price: { amount: 33925, currency: 'INR', note: 'Brewing Gadgets, Natural Wood finish; the three wood options are the same price' },
     summary: 'A hand grinder with 39 mm high-nitrogen stainless steel conical burrs and stepped clicks.',
     specs: {
       drive: 'Hand',
@@ -204,13 +204,13 @@ export const grinders: Grinder[] = [
       power: { value: 250, unit: 'W' },
       weight: { value: 6.8, unit: 'kg' },
       size: '225 × 130 × 300 mm (Turin lists about 10 × 5.2 × 12 in)',
-      use: placeholder('No fetched page states an intended brew range.'),
+      use: 'Espresso and filter (from the Gen 2.7 page)',
     },
     sources: [
       { label: 'Brewing Gadgets, product page', url: 'https://brewinggadgets.in/products/df64-gen2' },
       { label: 'Turin Grinders, DF64 Gen 2.7 page', url: 'https://www.turingrinders.com/products/turin-df64-gen-2-single-dose-coffee-grinder-1' },
     ],
-    src: { price: 0, burrs: 0, burrSize: 0, adjustment: 1, capacity: 1, power: 0, weight: 0, size: 0 },
+    src: { price: 0, burrs: 0, burrSize: 0, adjustment: 1, capacity: 1, power: 0, weight: 0, size: 0, use: 1 },
     checked,
   },
   {
