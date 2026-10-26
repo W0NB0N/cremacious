@@ -11,9 +11,19 @@ export type PollDeps = {
   sleep?: (ms: number) => Promise<void>;
   log?: (line: string) => void;
   settings?: Pick<typeof config, 'hostDelayMs' | 'requestTimeoutMs' | 'maxMoveFraction' | 'hostFailureLimit' | 'userAgent'>;
+  /** Hosts never to request (see config). Defaults to config.blockedHosts. */
+  blockedHosts?: string[];
 };
 
-const realSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+const isBlocked = (url: string, blocked: Set<string>) => {
+  try {
+    return blocked.has(new URL(url).host.toLowerCase().replace(/^www\./, ''));
+  } catch {
+    return false; // an unparseable url is reported as 'invalid url' further down
+  }
+};
+
+const realSleep =(ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 const base = (o: Offer, prev: OfferSnapshot | undefined): OfferSnapshot => ({
   productId: o.productId,
@@ -103,9 +113,10 @@ async function runCycle(deps: PollDeps): Promise<CycleSummary> {
     return true;
   };
 
+  const blocked = new Set(deps.blockedHosts ?? config.blockedHosts);
   const byHost = new Map<string, Offer[]>();
   for (const o of offers) {
-    if (o.adapter !== 'shopify') {
+    if (o.adapter !== 'shopify' || isBlocked(o.url, blocked)) {
       snapshot.offers[offerKey(o)] = { ...base(o, snapshot.offers[offerKey(o)]), status: 'unsupported' };
       counts.unsupported++;
       continue;
