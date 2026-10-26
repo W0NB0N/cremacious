@@ -20,6 +20,11 @@ export type OfferSnapshot = {
   /** Last accepted price in rupees; null if none has been read yet. */
   amount: number | null;
   available: boolean | null;
+  /**
+   * The store's own compare-at ("MRP", "was") price, only when it is above `amount`. Informational: it is the
+   * store's claim, not a market price, so it must never be shown as a saving or used as `amount`.
+   */
+  listPrice: number | null;
   /** The price written in src/data/offers.ts, for comparison. */
   referencePrice: number;
   status: OfferStatus;
