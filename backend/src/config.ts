@@ -1,9 +1,13 @@
 // All settings come from the environment, with safe defaults. Nothing here is a secret.
-const num = (name: string, fallback: number) => {
+// `min` / `max` exist because some values switch a guard off at zero (a failure limit of 0 never skips a dead host,
+// an interval of 0 polls in a tight loop), so those are refused at start-up instead of failing quietly later.
+const num = (name: string, fallback: number, { min = 0, max = Infinity } = {}) => {
   const raw = process.env[name];
   if (raw === undefined || raw === '') return fallback;
   const n = Number(raw);
   if (!Number.isFinite(n) || n < 0) throw new Error(`${name} must be a non-negative number, got "${raw}"`);
+  if (n < min) throw new Error(`${name} must be at least ${min}, got ${n}`);
+  if (n > max) throw new Error(`${name} must be at most ${max}, got ${n}`);
   return n;
 };
 
@@ -20,16 +24,16 @@ export const config = {
   blockedHosts: hostList(process.env.BLOCKED_HOSTS ?? DEFAULT_BLOCKED_HOSTS),
   port: num('PORT', 4000),
   /** Time between full polling cycles. */
-  pollIntervalMs: num('POLL_INTERVAL_MS', 6 * 60 * 60 * 1000),
+  pollIntervalMs: num('POLL_INTERVAL_MS', 6 * 60 * 60 * 1000, { min: 60_000 }),
   /** Pause between two requests to the same host. */
   hostDelayMs: num('HOST_DELAY_MS', 2000),
-  requestTimeoutMs: num('REQUEST_TIMEOUT_MS', 20_000),
+  requestTimeoutMs: num('REQUEST_TIMEOUT_MS', 20_000, { min: 1 }),
   /** A new price further than this fraction from the last accepted one is held as 'suspect'. */
-  maxMoveFraction: num('MAX_MOVE_FRACTION', 0.4),
+  maxMoveFraction: num('MAX_MOVE_FRACTION', 0.4, { min: 0.01 }),
   /** Skip the rest of a host in a cycle after this many failures in a row. */
-  hostFailureLimit: num('HOST_FAILURE_LIMIT', 3),
+  hostFailureLimit: num('HOST_FAILURE_LIMIT', 3, { min: 1 }),
   /** Above this failure rate the cycle is reported unhealthy and the next one waits longer. */
-  unhealthyRate: num('UNHEALTHY_RATE', 0.2),
+  unhealthyRate: num('UNHEALTHY_RATE', 0.2, { max: 1 }),
   /** Set POLL=off to serve the stored snapshot without polling. */
   polling: process.env.POLL !== 'off',
   storeDir: process.env.STORE_DIR ?? 'backend/.data',
