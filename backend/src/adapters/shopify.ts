@@ -62,6 +62,7 @@ export async function readShopify(
   return {
     amount: variant.price / 100,
     available: variant.available === true,
-    compareAt: variant.compare_at_price ? variant.compare_at_price / 100 : null,
+    // Same rule as price: whole paise, above zero. Anything else (a string, 0, 1.5) is ignored, not guessed at.
+    compareAt: Number.isInteger(variant.compare_at_price) && (variant.compare_at_price as number) > 0 ? (variant.compare_at_price as number) / 100 : null,
   };
 }

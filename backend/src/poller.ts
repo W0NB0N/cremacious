@@ -21,6 +21,7 @@ const base = (o: Offer, prev: OfferSnapshot | undefined): OfferSnapshot => ({
   url: o.url,
   amount: prev?.amount ?? null,
   available: prev?.available ?? null,
+  listPrice: prev?.listPrice ?? null,
   referencePrice: o.price,
   status: prev?.status ?? 'unsupported',
   readAt: prev?.readAt ?? null,
@@ -88,6 +89,7 @@ async function runCycle(deps: PollDeps): Promise<CycleSummary> {
     const changed = prev?.amount !== reading.amount || prev?.available !== reading.available;
     next.amount = reading.amount;
     next.available = reading.available;
+    next.listPrice = reading.compareAt !== null && reading.compareAt > reading.amount ? reading.compareAt : null;
     next.status = 'ok';
     next.readAt = next.attemptedAt;
     delete next.error;
