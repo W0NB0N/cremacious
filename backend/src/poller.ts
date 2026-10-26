@@ -95,7 +95,16 @@ export async function pollOnce(deps: PollDeps): Promise<CycleSummary> {
       counts.unsupported++;
       continue;
     }
-    const host = new URL(o.url).host;
+    let host: string;
+    try {
+      host = new URL(o.url).host;
+    } catch {
+      // One bad entry must not take the whole cycle down with it.
+      const key = offerKey(o);
+      snapshot.offers[key] = { ...base(o, snapshot.offers[key]), status: 'error', error: 'invalid url', attemptedAt: now().toISOString() };
+      counts.error++;
+      continue;
+    }
     byHost.set(host, [...(byHost.get(host) ?? []), o]);
   }
 

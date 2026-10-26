@@ -134,10 +134,10 @@ describe('api', () => {
     expect((await request(app).get('/health').expect(200)).body.healthy).toBe(true);
   });
 
-  it('health is 503 when the last cycle mostly failed, and 200 before any cycle', async () => {
+  it('health is 503 when the last cycle mostly failed, and also 503 before any cycle', async () => {
     const o = offer();
     const app = createApp({ store, offers: [o] });
-    await request(app).get('/health').expect(200);
+    await request(app).get('/health').expect(503);
     await pollOnce(deps([o], fakeFetch({ [JSON_URL]: { status: 500 } })));
     const res = await request(app).get('/health').expect(503);
     expect(res.body.healthy).toBe(false);
