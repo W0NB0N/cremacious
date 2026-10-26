@@ -4,8 +4,10 @@ import type { Store } from './store';
 import type { Offer } from './types';
 
 /** Read-only JSON API over the stored snapshot. It never calls a seller itself; the poller does. */
-export function createApp(deps: { store: Store; offers: Offer[]; allowedOrigin?: string }) {
+export function createApp(deps: { store: Store; offers: Offer[]; allowedOrigin?: string; now?: () => Date; pollIntervalMs?: number }) {
   const { store, offers } = deps;
+  const now = deps.now ?? (() => new Date());
+  const pollIntervalMs = deps.pollIntervalMs ?? config.pollIntervalMs;
   const known = new Set(offers.map((o) => o.productId));
   const allowedOrigin = deps.allowedOrigin ?? config.allowedOrigin;
   const app = express();
@@ -21,8 +23,12 @@ export function createApp(deps: { store: Store; offers: Offer[]; allowedOrigin?:
   app.get('/health', (_req, res) => {
     const snap = store.load();
     const cycle = snap.lastCycle;
-    const healthy = cycle !== null && cycle.failureRate <= config.unhealthyRate;
-    res.status(cycle === null || healthy ? 200 : 503).json({ healthy, polledAt: snap.updatedAt, lastCycle: cycle });
+    // Unhealthy when: no cycle yet, the last one is older than twice the interval (poller dead), or too many reads failed.
+    let reason: string | undefined;
+    if (cycle === null) reason = 'no completed cycle yet';
+    else if (now().getTime() - Date.parse(cycle.finishedAt) > 2 * pollIntervalMs) reason = 'stale';
+    else if (cycle.failureRate > config.unhealthyRate) reason = `failure rate ${(cycle.failureRate * 100).toFixed(1)}% is above ${(config.unhealthyRate * 100).toFixed(0)}%`;
+    res.status(reason ? 503 : 200).json({ healthy: !reason, ...(reason && { reason }), polledAt: snap.updatedAt, lastCycle: cycle });
   });
 
   app.get('/prices', (_req, res) => {

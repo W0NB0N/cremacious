@@ -2,16 +2,16 @@
 //                  npm run backend:poll    poll once, print a summary, exit
 import { readFileSync } from 'node:fs';
 import { config } from './config';
+import { parseOffers } from './offers';
 import { pollOnce, startPolling } from './poller';
 import { createApp } from './server';
 import { Store } from './store';
-import type { Offer } from './types';
 
 const log = (line: string) => console.log(`${new Date().toISOString()} ${line}`);
 
 async function main() {
   // The backend reads the generated data/ folder, never the site's TypeScript.
-  const offers = JSON.parse(readFileSync('data/offers.json', 'utf8')) as Offer[];
+  const offers = parseOffers(JSON.parse(readFileSync('data/offers.json', 'utf8')));
   const store = new Store(config.storeDir);
 
   if (process.argv.includes('--once')) {
