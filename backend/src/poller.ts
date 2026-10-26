@@ -27,8 +27,18 @@ const base = (o: Offer, prev: OfferSnapshot | undefined): OfferSnapshot => ({
   attemptedAt: prev?.attemptedAt ?? null,
 });
 
-/** Read every offer once. Hosts run side by side; offers on one host run one at a time, politely spaced. */
+/** One cycle at a time per store: a second one would duplicate history rows and race the snapshot write. */
 export async function pollOnce(deps: PollDeps): Promise<CycleSummary> {
+  const release = deps.store.acquireLock();
+  try {
+    return await runCycle(deps);
+  } finally {
+    release();
+  }
+}
+
+/** Read every offer once. Hosts run side by side; offers on one host run one at a time, politely spaced. */
+async function runCycle(deps: PollDeps): Promise<CycleSummary> {
   const { offers, store } = deps;
   const fetchImpl = deps.fetchImpl ?? fetch;
   const now = deps.now ?? (() => new Date());
@@ -54,6 +64,8 @@ export async function pollOnce(deps: PollDeps): Promise<CycleSummary> {
       next.status = 'error';
       // The text is served by the API, so it is capped and never carries more than a short reason.
       next.error = (e instanceof Error ? e.message : String(e)).slice(0, 200);
+      // A held price is still waiting for a second reading; one failed read in between must not forget it.
+      if (prev?.suspectAmount !== undefined) next.suspectAmount = prev.suspectAmount;
       snapshot.offers[key] = next;
       counts.error++;
       return false;
@@ -61,7 +73,7 @@ export async function pollOnce(deps: PollDeps): Promise<CycleSummary> {
 
     const last = prev?.amount ?? o.price;
     const moved = Math.abs(reading.amount - last) / last;
-    const confirmsSuspect = prev?.status === 'suspect' && prev.suspectAmount === reading.amount;
+    const confirmsSuspect = prev?.suspectAmount !== undefined && prev.suspectAmount === reading.amount;
 
     if (moved > s.maxMoveFraction && !confirmsSuspect) {
       // Keep the last good price; accept the new one only if the next read agrees.
@@ -126,6 +138,10 @@ export async function pollOnce(deps: PollDeps): Promise<CycleSummary> {
       }
     }),
   );
+
+  // Offers removed from the registry must stop being served as current prices.
+  const current = new Set(offers.map(offerKey));
+  for (const key of Object.keys(snapshot.offers)) if (!current.has(key)) delete snapshot.offers[key];
 
   const polled = counts.ok + counts.suspect + counts.error;
   const summary: CycleSummary = {

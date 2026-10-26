@@ -52,7 +52,8 @@ export function createApp(deps: { store: Store; offers: Offer[]; allowedOrigin?:
   app.get('/prices/:productId/history', (req, res) => {
     const { productId } = req.params;
     if (!known.has(productId)) return void res.status(404).json({ error: 'unknown product' });
-    const limit = Math.min(Math.max(Number(req.query.limit) || 100, 1), 500);
+    const asked = req.query.limit === undefined || req.query.limit === '' ? 100 : Number(req.query.limit);
+    const limit = Number.isFinite(asked) ? Math.min(Math.max(Math.trunc(asked), 1), 500) : 100;
     res.json({ productId, points: store.history(productId, limit) });
   });
 
