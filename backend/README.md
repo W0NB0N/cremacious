@@ -20,8 +20,8 @@ Stop it with Ctrl-C (SIGINT/SIGTERM close the server cleanly). State is in `back
 
 | Route | Returns |
 |---|---|
-| `GET /health` | `200` with `healthy`, or `503` when the last cycle's failure rate is above `UNHEALTHY_RATE`. |
-| `GET /prices` | Every offer, grouped by product id. |
+| `GET /health` | `200` with `healthy`, or `503` with a `reason`: no cycle has finished yet, the last one is older than twice `POLL_INTERVAL_MS` (`stale`), or its failure rate is above `UNHEALTHY_RATE`. |
+| `GET /prices` | Every offer, grouped by product id. `amount` is the selling price; `listPrice` is the store's own higher compare-at price or `null` (informational, not a saving). |
 | `GET /prices/:productId` | One product's offers. `404` for an unknown id. |
 | `GET /prices/:productId/history?limit=` | Accepted price changes, newest last (limit 1 to 500). |
 
@@ -31,7 +31,11 @@ Stop it with Ctrl-C (SIGINT/SIGTERM close the server cleanly). State is in `back
 - After `HOST_FAILURE_LIMIT` failures in a row a host is skipped for the rest of the cycle.
 - A price that moves more than `MAX_MOVE_FRACTION` (40%) from the last accepted one is held as `suspect` until a second read agrees.
 - A cycle above `UNHEALTHY_RATE` doubles the wait before the next one (up to 24 h).
-- A failed read never overwrites the last good price.
+- A failed read never overwrites the last good price, and does not forget a held `suspect` reading.
+- Seller responses are untrusted: redirects are never followed, bodies over 1 MB are rejected, stored error text is capped at 200 characters.
+- `data/offers.json` is validated at start-up (https only, positive price, `variantId` for Shopify, no duplicates); the backend refuses to start on a bad entry.
+- One cycle at a time per store (`poll.lock` holds the pid; a dead owner's lock is taken over).
+- Errors are generic JSON and sent with `no-store`; only successful price reads are cacheable (60 s).
 
 ## Adding a seller
 
