@@ -2,7 +2,11 @@
 // Run: npm run data:urls   (network; not part of npm test)
 import { products } from '../src/data/products/index';
 
-const urls = [...new Set(products.flatMap((p) => p.sources.map((s) => s.url)))];
+import { isBlockedUrl } from './blocked-urls';
+
+const all = [...new Set(products.flatMap((p) => p.sources.map((s) => s.url)))];
+// Stores whose terms prohibit automated reading are not fetched (same list as the price poller).
+const urls = all.filter((u) => !isBlockedUrl(u));
 const used = (url: string) => products.filter((p) => p.sources.some((s) => s.url === url)).map((p) => p.id);
 const headers = { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36' };
 
@@ -28,6 +32,6 @@ await Promise.all(Array.from({ length: 6 }, async () => {
     if (err) failures.push(`${err}  ${url}  (${used(url).join(', ')})`);
   }
 }));
-console.log(`${urls.length} source URLs, ${failures.length} failing`);
+console.log(`${urls.length} source URLs, ${failures.length} failing (${all.length - urls.length} skipped: blocked hosts)`);
 failures.forEach((f) => console.log('  ' + f));
 process.exit(failures.length ? 1 : 0);

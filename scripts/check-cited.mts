@@ -3,6 +3,7 @@
 // Run: npm run data:cited   (network; not part of npm test)
 import { products } from '../src/data/products/index';
 import { isPlaceholder, type Product, type Qty } from '../src/data/products/types';
+import { isBlockedUrl } from './blocked-urls';
 
 const headers = { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36' };
 const pages = new Map<string, Promise<string | null>>();
@@ -67,13 +68,15 @@ for (const p of products as Product[]) {
 
 const missing: string[] = [];
 const unreachable = new Set<string>();
-await Promise.all(checks.map(async (c) => {
+// Stores whose terms prohibit automated reading are not fetched (same list as the price poller).
+const toRun = checks.filter((c) => !isBlockedUrl(c.url));
+await Promise.all(toRun.map(async (c) => {
   const page = await load(c.url);
   if (page === null) { unreachable.add(c.url); return; }
   if (!c.want.some((n) => appears(page, n))) missing.push(`${c.id}.${c.key}: none of ${c.want.slice(0, 4).join(' / ')} on ${c.url}`);
 }));
 
-console.log(`${checks.length} cited numbers, ${missing.length} not found, ${unreachable.size} pages unreachable`);
+console.log(`${toRun.length} cited numbers, ${missing.length} not found, ${unreachable.size} pages unreachable (${checks.length - toRun.length} skipped: blocked hosts)`);
 missing.sort().forEach((m) => console.log('  ' + m));
 unreachable.forEach((u) => console.log('  unreachable: ' + u));
 process.exit(missing.length || unreachable.size ? 1 : 0);
