@@ -52,7 +52,8 @@ export async function pollOnce(deps: PollDeps): Promise<CycleSummary> {
       reading = await readShopify(o, { fetchImpl, userAgent: s.userAgent, timeoutMs: s.requestTimeoutMs });
     } catch (e) {
       next.status = 'error';
-      next.error = e instanceof Error ? e.message : String(e);
+      // The text is served by the API, so it is capped and never carries more than a short reason.
+      next.error = (e instanceof Error ? e.message : String(e)).slice(0, 200);
       snapshot.offers[key] = next;
       counts.error++;
       return false;

@@ -10,6 +10,30 @@ export const shopifyJsonUrl = (productUrl: string) => {
 
 type ShopifyVariant = { id: number; price: number; compare_at_price: number | null; available: boolean };
 
+/** A product page is a few KB. Anything near this size is not one, so stop reading rather than buffer it. */
+export const MAX_BODY_BYTES = 1_000_000;
+
+/** Read the body but give up past the cap. Checks the declared length first, then counts bytes as they stream in. */
+async function readCapped(res: Response): Promise<string> {
+  const declared = Number(res.headers.get('content-length'));
+  if (declared > MAX_BODY_BYTES) throw new Error('response too large');
+  if (!res.body) return '';
+  const reader = res.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > MAX_BODY_BYTES) {
+      await reader.cancel();
+      throw new Error('response too large');
+    }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks).toString('utf8');
+}
+
 export async function readShopify(
   offer: Offer,
   opts: { fetchImpl: Fetch; userAgent: string; timeoutMs: number },
@@ -18,18 +42,22 @@ export async function readShopify(
   const res = await opts.fetchImpl(shopifyJsonUrl(offer.url), {
     headers: { 'user-agent': opts.userAgent, accept: 'application/json' },
     signal: AbortSignal.timeout(opts.timeoutMs),
+    // Never follow a redirect: a seller (or whoever sits in front of it) could point the poller at an internal address.
+    redirect: 'manual',
   });
+  if (res.status >= 300 && res.status < 400) throw new Error(`redirect not followed (HTTP ${res.status})`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
   let body: { variants?: ShopifyVariant[] };
   try {
-    body = await res.json();
-  } catch {
+    body = JSON.parse(await readCapped(res));
+  } catch (e) {
+    if (e instanceof Error && e.message === 'response too large') throw e;
     throw new Error('response was not JSON');
   }
   const variant = body.variants?.find((v) => v.id === offer.variantId);
   if (!variant) throw new Error(`variant ${offer.variantId} not on the page any more`);
-  if (!Number.isInteger(variant.price) || variant.price <= 0) throw new Error(`unreadable price "${variant.price}"`);
+  if (!Number.isInteger(variant.price) || variant.price <= 0) throw new Error('unreadable price');
 
   return {
     amount: variant.price / 100,
