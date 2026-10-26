@@ -27,6 +27,7 @@ Stop it with Ctrl-C (SIGINT/SIGTERM close the server cleanly). State is in `back
 
 ## Guards
 
+- Hosts in `BLOCKED_HOSTS` are never requested (they show as `unsupported` and keep the registry price). The default is the four stores whose terms of service prohibit scraping or crawling: fixcoffee.shop, somethingsbrewing.in, blackbazacoffee.com, bilihu.in. Set `BLOCKED_HOSTS=` once a store gives permission.
 - Hosts are polled side by side, but one request at a time per host, `HOST_DELAY_MS` apart.
 - After `HOST_FAILURE_LIMIT` failures in a row a host is skipped for the rest of the cycle.
 - A price that moves more than `MAX_MOVE_FRACTION` (40%) from the last accepted one is held as `suspect` until a second read agrees.

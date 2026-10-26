@@ -7,7 +7,17 @@ const num = (name: string, fallback: number) => {
   return n;
 };
 
+/** "Foo.com, www.bar.in" -> ['foo.com', 'bar.in']. Hosts compare without case or a leading www. */
+export const hostList = (raw: string) =>
+  raw.split(',').map((h) => h.trim().toLowerCase().replace(/^www\./, '')).filter(Boolean);
+
+// Stores whose terms of service prohibit scraping or crawling (read 2026-10-26): Fix Coffee s.14(e),
+// Something's Brewing s.12(i), Black Baza s.12(i), Bilihu s.12(i). Set BLOCKED_HOSTS= (empty) once a store allows it.
+const DEFAULT_BLOCKED_HOSTS = 'fixcoffee.shop,somethingsbrewing.in,blackbazacoffee.com,bilihu.in';
+
 export const config = {
+  /** Offers on these hosts are never requested; they show as 'unsupported' and keep the registry price. */
+  blockedHosts: hostList(process.env.BLOCKED_HOSTS ?? DEFAULT_BLOCKED_HOSTS),
   port: num('PORT', 4000),
   /** Time between full polling cycles. */
   pollIntervalMs: num('POLL_INTERVAL_MS', 6 * 60 * 60 * 1000),
